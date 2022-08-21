@@ -28,6 +28,9 @@ jobs:
         cache: 'npm'
         
     - name: Build Peoject
+    - run: npm install
+        
+    - name: Build Peoject
     - run: npm run build
     
     - name: Copy files
