@@ -20,18 +20,19 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Project
+        run: npm run build
+
+      - name: Copy files
+        run: cp -R build/* /home/frontend/html
         
-    - name: Build Peoject
-    - run: npm install
-        
-    - name: Build Project
-    - run: npm run build
-    
-    - name: Copy files
-    - run: sudo cp -R build/* /var/www/html
