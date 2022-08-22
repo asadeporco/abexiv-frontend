@@ -1,7 +1,7 @@
-import { Home } from './pages/Home'
+import { UserRoutes } from 'routes'
 
 function App() {
-  return <Home />
+  return <UserRoutes />
 }
 
 export default App
