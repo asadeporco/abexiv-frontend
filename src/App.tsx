@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-            👌It works 👍
+            😊 Pipeline final test 😊
         </p>
         <a
           className="App-link"
@@ -21,7 +21,6 @@ function App() {
       </header>
     </div>
   );
->>>>>>> parent of e91b9a2... pipeline final test
 }
 
 export default App
