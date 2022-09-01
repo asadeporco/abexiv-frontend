@@ -1,0 +1,35 @@
+import { Box, Grid, Stack, Typography } from '@mui/material'
+
+export function HomeTemplate() {
+  return (
+    <Stack>
+      <Grid
+        height="50vh"
+        container
+        alignItems="center"
+        justifyContent="center"
+        textAlign="end"
+      >
+        <Grid item xs={4} justifyContent="center">
+          <Stack spacing={5}>
+            <Typography variant="h1">Tem alguma pergunta?</Typography>
+            <Typography>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Reprehenderit sit vel porro debitis ipsum maxime, nostrum,
+              corrupti numquam, eveniet deserunt neque pariatur magni architecto
+              ducimus eaque? Placeat ea est numquam.
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={5}>
+          <Box
+            component="img"
+            height="600px"
+            width="500px"
+            src="https://freesvg.org/img/erp.png"
+          />
+        </Grid>
+      </Grid>
+    </Stack>
+  )
+}

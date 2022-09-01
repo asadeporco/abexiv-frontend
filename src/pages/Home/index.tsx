@@ -1,3 +1,5 @@
+import { HomeTemplate } from 'templates/HomeTemplate'
+
 export function Home() {
-  return <div>a</div>
+  return <HomeTemplate />
 }
