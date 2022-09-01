@@ -1,4 +1,4 @@
-import { NotLoggedNavbarTemplate } from 'templates/NotLoggedNavbarTemplate'
+import { NavbarTemplate } from 'templates/NavbarTemplate'
 import { Home } from 'pages/Home'
 
 import { Stack } from '@mui/material'
@@ -8,7 +8,7 @@ export function UserRoutes() {
   return (
     <BrowserRouter>
       <Stack>
-        <NotLoggedNavbarTemplate />
+        <NavbarTemplate />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
