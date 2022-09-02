@@ -2,6 +2,7 @@ import {
   Checkbox,
   CheckboxProps,
   FormControlLabel,
+  Stack,
   Typography
 } from '@mui/material'
 import { Controller, Control } from 'react-hook-form'
@@ -13,16 +14,32 @@ type CheckHookProps = {
   rules?: any
 } & CheckboxProps
 
-export function CheckHook({ name, control, label, ...props }: CheckHookProps) {
+export function CheckHook({
+  name,
+  control,
+  label,
+  rules,
+  ...props
+}: CheckHookProps) {
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field }) => {
+      rules={rules}
+      render={({ field, fieldState: { error } }) => {
         return (
           <FormControlLabel
             control={<Checkbox {...field} {...props} />}
-            label={<Typography fontSize="16px">{label}</Typography>}
+            label={
+              <Stack>
+                <Typography margin={0} fontSize="14px">
+                  {label}
+                </Typography>
+                <Typography margin={0} fontSize="13px" color="error">
+                  {error?.message}
+                </Typography>
+              </Stack>
+            }
           />
         )
       }}

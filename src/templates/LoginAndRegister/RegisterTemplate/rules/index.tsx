@@ -20,6 +20,8 @@ export const passwordRules = {
 }
 
 export const checkRules = {
-  validate: (value: boolean) =>
-    value == true || 'Você precisa aceitar os termos'
+  validate: {
+    check: (value: boolean) =>
+      value === true || 'Você precisa aceitar os termos de uso'
+  }
 }
