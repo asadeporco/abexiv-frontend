@@ -1,5 +1,13 @@
+import { Stack } from '@mui/material'
+
 import { HomeTemplate } from 'templates/HomeTemplate'
+import { CardCategories } from 'templates/CardCategories'
 
 export function Home() {
-  return <HomeTemplate />
+  return (
+    <Stack spacing={15}>
+      <HomeTemplate />
+      <CardCategories />
+    </Stack>
+  )
 }
