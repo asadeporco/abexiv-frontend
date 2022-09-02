@@ -1,18 +1,16 @@
 import { Box, Grid, Stack, Typography } from '@mui/material'
 
+import { GridCustom } from 'components/GridCustom'
+
 export function HomeTemplate() {
   return (
     <Stack>
-      <Grid
-        height="50vh"
-        container
-        alignItems="center"
-        justifyContent="center"
-        textAlign="end"
-      >
+      <GridCustom height="40hv">
         <Grid item xs={4} justifyContent="center">
-          <Stack spacing={5}>
-            <Typography variant="h1">Tem alguma pergunta?</Typography>
+          <Stack spacing={5} textAlign="start">
+            <Typography variant="h1" fontSize={45}>
+              Tem alguma pergunta?
+            </Typography>
             <Typography>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Reprehenderit sit vel porro debitis ipsum maxime, nostrum,
@@ -21,7 +19,7 @@ export function HomeTemplate() {
             </Typography>
           </Stack>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={4}>
           <Box
             component="img"
             height="600px"
@@ -29,7 +27,7 @@ export function HomeTemplate() {
             src="https://freesvg.org/img/erp.png"
           />
         </Grid>
-      </Grid>
+      </GridCustom>
     </Stack>
   )
 }

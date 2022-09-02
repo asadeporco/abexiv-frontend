@@ -1,19 +1,14 @@
 import { AppBar, Grid, Stack, Toolbar, Typography } from '@mui/material'
 
 import { ButtonCustom } from 'components/ButtonCustom'
+import { GridCustom } from 'components/GridCustom'
 
 export function NavbarTemplate() {
   return (
     <Stack padding={10}>
       <AppBar position="fixed" elevation={4}>
         <Toolbar>
-          <Grid
-            container
-            py={1.5}
-            alignItems="center"
-            justifyContent="center"
-            textAlign="center"
-          >
+          <GridCustom padding={1.5}>
             <Grid item xs={6}>
               <Stack
                 spacing={0.5}
@@ -38,7 +33,7 @@ export function NavbarTemplate() {
                 <ButtonCustom color="info">Registrar-se</ButtonCustom>
               </Stack>
             </Grid>
-          </Grid>
+          </GridCustom>
         </Toolbar>
       </AppBar>
     </Stack>
