@@ -45,7 +45,7 @@ export function LoginTemplate() {
         </Container>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
-            Não tem uma conta <a href="google.com">clique aqui</a>
+            Não tem uma conta <a href="../register">clique aqui</a>
           </Typography>
           <Typography fontSize={15}>e registre-se agora</Typography>
         </Container>

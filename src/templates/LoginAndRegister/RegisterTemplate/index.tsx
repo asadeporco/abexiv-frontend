@@ -10,10 +10,22 @@ import { submitForm } from './functions/submitForm'
 
 import { useForm } from 'react-hook-form'
 
-export type RegisterFormProps = {}
+export type RegisterFormProps = {
+  email: string
+  password: string
+  confirmPassword: string
+  check: boolean
+}
 
 export function RegisterTemplate() {
-  const { control, handleSubmit } = useForm<RegisterFormProps>()
+  const { control, handleSubmit } = useForm<RegisterFormProps>({
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      check: false
+    }
+  })
 
   return (
     <Stack justifyContent="center">
@@ -26,6 +38,7 @@ export function RegisterTemplate() {
         <Typography variant="h1">Registrar-se</Typography>
         <TextFieldHook
           name="email"
+          type="email"
           label="Digite seu e-mail"
           control={control}
           rules={emailRules}
@@ -34,12 +47,14 @@ export function RegisterTemplate() {
           name="password"
           type="password"
           label="Digite sua senha"
+          autoComplete="on"
           control={control}
           rules={passwordRules}
         />
         <TextFieldHook
-          name="password-repeat"
+          name="confirmPassword"
           type="password"
+          autoComplete="on"
           label="Repita sua senha"
           control={control}
         />
@@ -59,7 +74,7 @@ export function RegisterTemplate() {
         </Container>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
-            Já tem uma conta <a href="google.com">clique aqui</a>
+            Já tem uma conta <a href="../login">clique aqui</a>
           </Typography>
           <Typography fontSize={15}>e faça login agora</Typography>
         </Container>
