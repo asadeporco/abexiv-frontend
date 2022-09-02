@@ -1,20 +1,35 @@
-import { GridCustom } from 'components/GridCustom'
-
 import { Container, Grid, Stack } from '@mui/material'
-import { AvatarWithName } from 'components/AvatarWithName'
+
+import { GridCustom } from 'components/GridCustom'
+import { AskContainer } from './AskContainer'
+import { ResponseTemplate } from './ResponseTemplate'
+import { SimilarQuestions } from './SimilarQuestions'
 
 export function QuestionTemplate() {
   return (
     <Stack>
       <Container>
-        <GridCustom>
+        <GridCustom spacing={10}>
           <Grid item xs={6}>
-            <AvatarWithName
-              image="data:image/jpeg;base64,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"
-              name="cleber22"
-            />
+            <Stack spacing={10}>
+              <AskContainer
+                username="pedro"
+                avatar=""
+                questionTitle="dacueba"
+                questionDescription=""
+                date="10/10/2021"
+              />
+              <ResponseTemplate
+                avatar=""
+                username="pedro alvares cabral"
+                response="boa pergunta"
+                date="10/10/2021"
+              />
+            </Stack>
           </Grid>
-          <Grid item xs={6}></Grid>
+          <Grid item xs={6}>
+            <SimilarQuestions />
+          </Grid>
         </GridCustom>
       </Container>
     </Stack>

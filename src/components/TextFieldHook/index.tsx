@@ -1,7 +1,7 @@
 import { TextField, TextFieldProps } from '@mui/material'
 import { Controller } from 'react-hook-form'
 
-type TextFieldHookProps = {
+export type TextFieldHookProps = {
   name: string
   control: any
   rules?: any
