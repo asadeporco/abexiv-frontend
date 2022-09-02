@@ -1,9 +1,12 @@
 import { AppBar, Grid, Stack, Toolbar, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 import { ButtonCustom } from 'components/ButtonCustom'
 import { GridCustom } from 'components/GridCustom'
 
 export function NavbarTemplate() {
+  const navigate = useNavigate()
+
   return (
     <Stack padding={10}>
       <AppBar position="fixed" elevation={4}>
@@ -16,10 +19,16 @@ export function NavbarTemplate() {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Typography variant="h1" fontSize={'55px'}>
-                  Σ
-                </Typography>
-                <Typography variant="h1">Respondidos&#xb2;</Typography>
+                <ButtonCustom
+                  onClick={() => navigate('../')}
+                  variant="text"
+                  color="inherit"
+                >
+                  <Typography variant="h1" fontSize={'55px'}>
+                    Σ
+                  </Typography>
+                  <Typography variant="h1">Respondidos&#xb2;</Typography>
+                </ButtonCustom>
               </Stack>
             </Grid>
             <Grid item xs={6}>
@@ -29,8 +38,15 @@ export function NavbarTemplate() {
                 alignItems="center"
                 direction="row"
               >
-                <ButtonCustom>Fazer Login</ButtonCustom>
-                <ButtonCustom color="info">Registrar-se</ButtonCustom>
+                <ButtonCustom onClick={() => navigate('../login')}>
+                  Fazer Login
+                </ButtonCustom>
+                <ButtonCustom
+                  onClick={() => navigate('../register')}
+                  color="info"
+                >
+                  Registrar-se
+                </ButtonCustom>
               </Stack>
             </Grid>
           </GridCustom>
