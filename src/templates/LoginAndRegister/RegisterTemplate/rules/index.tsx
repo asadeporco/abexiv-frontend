@@ -1,9 +1,6 @@
 export const emailRules = {
   required: 'Este campo é obrigatório',
-  minLength: {
-    value: 5,
-    message: 'O mínimo de caracteres é 7'
-  },
+
   pattern: {
     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
     message: 'Este e-mail é inválido'
@@ -20,4 +17,9 @@ export const passwordRules = {
     value: 42,
     message: 'O máximo de caracteres é 42'
   }
+}
+
+export const checkRules = {
+  validate: (value: boolean) =>
+    value == true || 'Você precisa aceitar os termos'
 }

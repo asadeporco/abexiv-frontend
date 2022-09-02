@@ -10,6 +10,7 @@ type CheckHookProps = {
   name: string
   label?: string
   control: Control<any>
+  rules?: any
 } & CheckboxProps
 
 export function CheckHook({ name, control, label, ...props }: CheckHookProps) {
@@ -20,7 +21,7 @@ export function CheckHook({ name, control, label, ...props }: CheckHookProps) {
       render={({ field }) => {
         return (
           <FormControlLabel
-            control={<Checkbox defaultChecked {...field} {...props} />}
+            control={<Checkbox {...field} {...props} />}
             label={<Typography fontSize="16px">{label}</Typography>}
           />
         )

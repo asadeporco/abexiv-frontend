@@ -8,7 +8,6 @@ import { CheckHook } from 'components/CheckHook'
 import { useForm } from 'react-hook-form'
 
 import { submitForm } from './functions/submitForm'
-import { emailRules, passwordRules } from './rules'
 
 export type LoginTemplateForm = {}
 
@@ -24,17 +23,11 @@ export function LoginTemplate() {
         textAlign={'center'}
       >
         <Typography variant="h1">Fazer login</Typography>
-        <TextFieldHook
-          name="email"
-          label="E-mail"
-          rules={emailRules}
-          control={control}
-        />
+        <TextFieldHook name="email" label="E-mail" control={control} />
         <TextFieldHook
           name="password"
           type="password"
           label="Senha"
-          rules={passwordRules}
           control={control}
         />
         <Container>
