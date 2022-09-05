@@ -1,18 +1,22 @@
-import { NotLoggedNavbarTemplate } from 'templates/NotLoggedNavbarTemplate'
-import { Home } from 'pages/Home'
+import { NavbarTemplate } from 'templates/NavbarTemplate/NavbarNotUser'
 
-import { Stack } from '@mui/material'
+import { Home } from 'pages/Home'
+import { Login } from 'pages/Login'
+import { Register } from 'pages/Register'
+import { Question } from 'pages/Question'
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export function UserRoutes() {
   return (
     <BrowserRouter>
-      <Stack>
-        <NotLoggedNavbarTemplate />
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Stack>
+      <NavbarTemplate />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/question" element={<Question />} />
+      </Routes>
     </BrowserRouter>
   )
 }
