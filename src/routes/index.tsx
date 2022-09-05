@@ -1,4 +1,4 @@
-import { NavbarTemplate } from 'templates/NavbarTemplate'
+import { NavbarTemplate } from 'templates/NavbarTemplate/NavbarNotUser'
 
 import { Home } from 'pages/Home'
 import { Login } from 'pages/Login'
