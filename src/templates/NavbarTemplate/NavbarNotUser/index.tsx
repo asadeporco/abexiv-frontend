@@ -2,6 +2,7 @@ import { Grid, Stack, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 import { AppBarCustom } from 'components/AppbarCustom'
+import { SearchInput } from 'components/SearchInput'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { GridCustom } from 'components/GridCustom'
 
@@ -11,7 +12,7 @@ export function NavbarNotUser() {
   return (
     <AppBarCustom>
       <GridCustom padding={1.5}>
-        <Grid item xs={6}>
+        <Grid item xs={3}>
           <Stack
             spacing={0.5}
             direction="row"
@@ -31,6 +32,11 @@ export function NavbarNotUser() {
           </Stack>
         </Grid>
         <Grid item xs={6}>
+          <Stack maxWidth={850}>
+            <SearchInput size="small" placeholder="pesquisar..." />
+          </Stack>
+        </Grid>
+        <Grid item xs={3}>
           <Stack
             spacing={6}
             justifyContent="center"
