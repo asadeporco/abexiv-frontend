@@ -6,7 +6,7 @@ import { green } from 'global/data/Green'
 export function HomeTemplate() {
   console.log(green)
   return (
-    <Stack>
+    <Stack textAlign="center">
       <GridCustom height="40hv">
         <Grid item xs={4} justifyContent="center">
           <Stack spacing={5} textAlign="start">
