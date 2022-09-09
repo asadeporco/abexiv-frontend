@@ -5,11 +5,11 @@ type AvatarCustomProps = {
   size?: number
 } & AvatarProps
 
-export function AvatarCustom({ image, size }: AvatarCustomProps) {
+export function AvatarCustom({ image, size, ...props }: AvatarCustomProps) {
   const styleAvatar = {
     width: size ? `${size}px` : '40px',
     height: size ? `${size}px` : '40px'
   }
 
-  return <Avatar src={image} sx={styleAvatar} />
+  return <Avatar src={image} sx={styleAvatar} {...props} />
 }

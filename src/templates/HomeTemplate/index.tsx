@@ -1,16 +1,10 @@
-import { Box, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 
 import { GridCustom } from 'components/GridCustom'
-import { SearchInput } from 'components/SearchInput'
 
 export function HomeTemplate() {
   return (
     <Stack textAlign="center">
-      <Container>
-        <Stack>
-          <SearchInput label="Pesquisar pergunta" />
-        </Stack>
-      </Container>
       <GridCustom height="40hv">
         <Grid item xs={4} justifyContent="center">
           <Stack spacing={5} textAlign="start">
