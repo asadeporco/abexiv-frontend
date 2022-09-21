@@ -1,68 +1,151 @@
-import { Grid, Stack, Typography, Link } from '@mui/material'
+import { MouseEvent, useState } from 'react'
+import { AppBarCustom } from 'components/AppbarCustom'
+import { GridCustom } from 'components/GridCustom'
+import { Grid, Stack, Box, Typography, Avatar } from '@mui/material'
+import { ButtonCustom } from 'components/ButtonCustom'
+import { SearchInput } from 'components/SearchInput'
+import { AvatarCustom } from 'components/AvatarCustom'
+import { HomeLogo } from 'components/HomeLogo'
+
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+
+import { DrawerCustom } from 'components/NavbarComponent/Drawer'
+
+import { UserMenu } from 'components/NavbarComponent/UserMenu'
 import { useNavigate } from 'react-router-dom'
 
-import { AppBarCustom } from 'components/AppbarCustom'
-import { SearchInput } from 'components/SearchInput'
-import { ButtonCustom } from 'components/ButtonCustom'
-import { AvatarCustom } from 'components/AvatarCustom'
-import { GridCustom } from 'components/GridCustom'
+interface NavbarProps {
+  user: boolean
+}
 
-export function NavbarUser() {
+export function NavbarUser({ user }: NavbarProps) {
   const navigate = useNavigate()
 
+  //mobile menu
+  const menuId = 'primary-search-account-menu-mobile'
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const isMenuOpen = Boolean(anchorEl)
+  const handleMenuOpen = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+
+  //drawer
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
   return (
-    <AppBarCustom>
-      <GridCustom padding={1.5}>
-        <Grid item xs={3}>
+    <Box sx={{ display: 'flex' }}>
+      <AppBarCustom sx={{ margin: '0px' }}>
+        <Grid
+          item
+          flexDirection="row"
+          justifyContent="space-between"
+          sx={{ display: { xs: 'flex', sm: 'none' } }}
+        >
           <Stack
-            spacing={11}
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
+            width="90vw"
+            flexDirection="row"
+            justifyContent="space-between"
           >
-            <ButtonCustom
-              onClick={() => navigate('../')}
-              sx={{ backgroundColor: 'transparent' }}
-              variant="text"
-              LinkComponent={Link}
+            <HomeLogo />
+            <IconButton
+              color="inherit"
+              edge="end"
+              aria-label="open drawer"
+              onClick={handleDrawerToggle}
             >
-              <Typography color="#000000" variant="h1" fontSize={'55px'}>
-                Σ
-              </Typography>
-              <Typography color="#000000" variant="h1">
-                Respondidos&#xb2;
-              </Typography>
-            </ButtonCustom>
+              <MenuIcon />
+            </IconButton>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
-          <Stack maxWidth={850}>
-            <SearchInput size="small" placeholder="pesquisar..." />
-          </Stack>
-        </Grid>
-        <Grid item xs={2}>
-          <Stack
-            spacing={0}
-            justifyContent="center"
-            alignItems="center"
-            direction="row"
+        <GridCustom
+          justifyContent={{ sm: 'space-between', md: 'center' }}
+          alignItems="center"
+          sx={{ display: { xs: 'none', sm: 'flex' } }}
+        >
+          <Grid item xs={4} justifyContent={{ xs: 'flex-start', sm: 'center' }}>
+            <HomeLogo />
+          </Grid>
+          <Grid item xs={4}>
+            <Stack maxWidth={750}>
+              <SearchInput size="small" placeholder="pesquisar..." />
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            sx={{ display: { sm: 'none', md: 'flex' } }}
+            justifyContent={{ xs: 'end', sm: 'center' }}
           >
-            <ButtonCustom
-              sx={{ backgroundColor: 'transparent' }}
-              variant="text"
-              LinkComponent={Link}
-            >
-              <Typography color="#000000">pedro69</Typography>
-            </ButtonCustom>
-            <ButtonCustom variant="text" LinkComponent={Link}>
-              <AvatarCustom
-                size={50}
-                image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
-              />
-            </ButtonCustom>
-          </Stack>
-        </Grid>
-      </GridCustom>
-    </AppBarCustom>
+            {user ? (
+              <Box>
+                <ButtonCustom
+                  sx={{ backgroundColor: 'transparent' }}
+                  variant="text"
+                >
+                  <Typography>pedro69</Typography>
+                </ButtonCustom>
+                <ButtonCustom
+                  variant="text"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleMenuOpen}
+                >
+                  <AvatarCustom
+                    size={50}
+                    image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
+                  />
+                </ButtonCustom>
+              </Box>
+            ) : (
+              <Stack direction="row">
+                <ButtonCustom onClick={() => navigate('../login')} size="small">
+                  Fazer Login
+                </ButtonCustom>
+                <ButtonCustom
+                  onClick={() => navigate('../register')}
+                  color="info"
+                  size="small"
+                >
+                  Registrar-se
+                </ButtonCustom>
+              </Stack>
+            )}
+          </Grid>
+          <Grid item xs={1} sx={{ display: { sm: 'flex', md: 'none' } }}>
+            <Box>
+              <IconButton aria-controls={menuId} onClick={handleMenuOpen}>
+                {user ? (
+                  <AvatarCustom
+                    size={50}
+                    image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
+                  />
+                ) : (
+                  <Avatar />
+                )}
+              </IconButton>
+            </Box>
+          </Grid>
+        </GridCustom>
+      </AppBarCustom>
+      <UserMenu
+        isMenuOpen={isMenuOpen}
+        id={menuId}
+        handleMenuClose={handleMenuClose}
+        anchorEl={anchorEl}
+        user={user}
+      />
+      <DrawerCustom
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        user={user}
+      />
+    </Box>
   )
 }

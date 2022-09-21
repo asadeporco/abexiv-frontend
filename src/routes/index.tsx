@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { NavbarNotUser } from 'templates/NavbarTemplate/NavbarNotUser'
 import { NavbarUser } from 'templates/NavbarTemplate/NavbarUser'
 
 import { Home } from 'pages/Home'
@@ -11,11 +10,11 @@ import { Question } from 'pages/Question'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export function UserRoutes() {
-  const [user] = useState(false)
+  const [user] = useState(true)
 
   return (
     <BrowserRouter>
-      {user ? <NavbarUser /> : <NavbarNotUser />}
+      <NavbarUser user={user} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

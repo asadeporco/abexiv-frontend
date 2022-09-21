@@ -1,57 +1,127 @@
-import { Grid, Stack, Typography } from '@mui/material'
+import { MouseEvent, useState } from 'react'
+
+import { Avatar, Box, Grid, IconButton, Stack } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 import { AppBarCustom } from 'components/AppbarCustom'
 import { SearchInput } from 'components/SearchInput'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { GridCustom } from 'components/GridCustom'
+import { HomeLogo } from 'components/HomeLogo'
+import { DrawerCustom } from 'components/NavbarComponent/Drawer'
 
-export function NavbarNotUser() {
+import MenuIcon from '@mui/icons-material/Menu'
+import { UserMenu } from 'components/NavbarComponent/UserMenu'
+
+interface NavbarProps {
+  user: boolean
+}
+
+export function NavbarNotUser({ user }: NavbarProps) {
   const navigate = useNavigate()
 
+  //mobile menu
+  const menuId = 'primary-search-account-menu-mobile'
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const isMenuOpen = Boolean(anchorEl)
+  const handleMenuOpen = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleMenuClose = () => {
+    setAnchorEl(null)
+  }
+
+  //drawer
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen)
+  }
+
   return (
-    <AppBarCustom>
-      <GridCustom padding={1.5}>
-        <Grid item xs={3}>
+    <>
+      <AppBarCustom>
+        <Grid
+          item
+          xs={12}
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          sx={{ display: { xs: 'flex', sm: 'none' } }}
+        >
           <Stack
-            spacing={0.5}
-            direction="row"
-            alignItems="center"
-            justifyContent="center"
+            width="90vw"
+            flexDirection="row"
+            justifyContent="space-between"
           >
-            <ButtonCustom
-              onClick={() => navigate('../')}
-              variant="text"
+            <HomeLogo />
+            <IconButton
               color="inherit"
+              edge="end"
+              aria-label="open drawer"
+              onClick={handleDrawerToggle}
             >
-              <Typography variant="h1" fontSize={'55px'}>
-                Σ
-              </Typography>
-              <Typography variant="h1">Respondidos&#xb2;</Typography>
-            </ButtonCustom>
+              <MenuIcon />
+            </IconButton>
           </Stack>
         </Grid>
-        <Grid item xs={6}>
-          <Stack maxWidth={850}>
-            <SearchInput size="small" placeholder="pesquisar..." />
-          </Stack>
-        </Grid>
-        <Grid item xs={3}>
-          <Stack
-            spacing={6}
-            justifyContent="center"
-            alignItems="center"
-            direction="row"
+        <GridCustom
+          justifyContent={{ sm: 'space-between', md: 'center' }}
+          alignItems="center"
+          sx={{ display: { xs: 'none', sm: 'flex' } }}
+        >
+          <Grid item xs={4} justifyContent={{ xs: 'flex-start', sm: 'center' }}>
+            <HomeLogo />
+          </Grid>
+          <Grid item xs={4}>
+            <Stack maxWidth={750}>
+              <SearchInput size="small" placeholder="pesquisar..." />
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            sx={{ display: { sm: 'none', md: 'flex' } }}
+            justifyContent={{ xs: 'end', sm: 'center' }}
           >
-            <ButtonCustom onClick={() => navigate('../login')}>
+            <ButtonCustom onClick={() => navigate('../login')} size="small">
               Fazer Login
             </ButtonCustom>
-            <ButtonCustom onClick={() => navigate('../register')} color="info">
+            <ButtonCustom
+              onClick={() => navigate('../register')}
+              color="info"
+              size="small"
+            >
               Registrar-se
             </ButtonCustom>
-          </Stack>
-        </Grid>
-      </GridCustom>
-    </AppBarCustom>
+          </Grid>
+          <Grid item xs={1} sx={{ display: { sm: 'flex', md: 'none' } }}>
+            <Box>
+              <IconButton
+                size="large"
+                aria-label="show more"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleMenuOpen}
+                color="inherit"
+              >
+                <Avatar />
+              </IconButton>
+            </Box>
+          </Grid>
+        </GridCustom>
+      </AppBarCustom>
+      <UserMenu
+        isMenuOpen={isMenuOpen}
+        id={menuId}
+        handleMenuClose={handleMenuClose}
+        anchorEl={anchorEl}
+        user={user}
+      />
+      <DrawerCustom
+        mobileOpen={mobileOpen}
+        handleDrawerToggle={handleDrawerToggle}
+        user={user}
+      />
+    </>
   )
 }

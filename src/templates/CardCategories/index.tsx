@@ -9,7 +9,11 @@ import { cardCategories, words } from './data'
 export const CardCategories = () => {
   return (
     <Stack height={'70vh'} alignItems="center" textAlign="center" spacing={10}>
-      <Stack justifyContent="center" direction="row" spacing={1.5}>
+      <Stack
+        justifyContent="center"
+        direction={{ xs: 'column', sm: 'row' }}
+        spacing={1.5}
+      >
         <Typography fontSize={52} variant="h1">
           Pergunte sobre
         </Typography>
@@ -25,17 +29,18 @@ export const CardCategories = () => {
           />
         </Typography>
       </Stack>
-      <Stack
-        direction="row"
-        spacing={11}
-        justifyContent="center"
-        alignItems="center"
-        textAlign="center"
-      >
-        {cardCategories.map((card) => (
-          <CardCustom key={card.title} title={card.title} image={card.img} />
-        ))}
-      </Stack>
+      <Container maxWidth="lg">
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          justifyContent="center"
+          alignItems="center"
+          spacing={2}
+        >
+          {cardCategories.map((card) => (
+            <CardCustom key={card.title} title={card.title} image={card.img} />
+          ))}
+        </Stack>
+      </Container>
       <Container>
         <ButtonCustom color="info">Mais categorias</ButtonCustom>
       </Container>
