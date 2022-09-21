@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Card, CardContent, Box, Typography, Stack } from '@mui/material'
 
 type CardCustomProps = {
@@ -8,15 +7,13 @@ type CardCustomProps = {
 
 export function CardCustom({ title, image }: CardCustomProps) {
   return (
-    <Card sx={{ maxWidth: 400, border: 'none', boxShadow: 'none' }}>
-      <Stack>
+    <Card sx={{ border: 'none', boxShadow: 'none' }}>
+      <Stack direction="column">
         <Box maxHeight={225} component="img" src={image} />
         <CardContent>
-          <Stack>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-          </Stack>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}
+          </Typography>
         </CardContent>
       </Stack>
     </Card>

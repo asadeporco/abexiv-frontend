@@ -9,7 +9,7 @@ export function SearchInput({ ...props }: SearchInputProps) {
       autoComplete="off"
       color="info"
       {...props}
-      InputProps={{ startAdornment: <SearchIcon /> }}
+      InputProps={{ startAdornment: <SearchIcon fontSize="small" /> }}
     />
   )
 }

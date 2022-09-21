@@ -1,18 +1,14 @@
-import { Box, Container, Grid, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 
 import { GridCustom } from 'components/GridCustom'
-import { SearchInput } from 'components/SearchInput'
+import { green } from 'global/data/Green'
 
 export function HomeTemplate() {
+  console.log(green)
   return (
     <Stack textAlign="center">
-      <Container>
-        <Stack>
-          <SearchInput label="Pesquisar pergunta" />
-        </Stack>
-      </Container>
-      <GridCustom height="40hv">
-        <Grid item xs={4} justifyContent="center">
+      <GridCustom height="40hv" spacing={3}>
+        <Grid item xs={10} sm={5} justifyContent="center">
           <Stack spacing={5} textAlign="start">
             <Typography variant="h1" fontSize={45}>
               Tem alguma pergunta?
@@ -25,11 +21,11 @@ export function HomeTemplate() {
             </Typography>
           </Stack>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={10} sm={5}>
           <Box
             component="img"
-            height="600px"
-            width="500px"
+            height="100%"
+            width="100%"
             src="https://freesvg.org/img/erp.png"
           />
         </Grid>

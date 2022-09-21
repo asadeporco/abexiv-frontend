@@ -5,7 +5,7 @@ import { ContainerForm } from 'components/ContainerForm'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
 
-import { emailRules, passwordRules, checkRules } from './rules'
+import { emailRules, passwordRules, checkRules, validate } from './rules'
 import { submitForm } from './functions/submitForm'
 
 import { useForm } from 'react-hook-form'
@@ -18,15 +18,19 @@ export type RegisterFormProps = {
 }
 
 export function RegisterTemplate() {
-  const { control, handleSubmit } = useForm<RegisterFormProps>({
-    defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      check: false
-    }
-  })
+  const { control, handleSubmit, getValues, watch } =
+    useForm<RegisterFormProps>({
+      defaultValues: {
+        email: '',
+        password: '',
+        confirmPassword: '',
+        check: false
+      }
+    })
+  const watchPassword = watch('password')
+  const watchConfirmPassword = watch('confirmPassword')
 
+  console.log('getValues: ', getValues().password)
   return (
     <Stack justifyContent="center">
       <ContainerForm
@@ -47,16 +51,15 @@ export function RegisterTemplate() {
           name="password"
           type="password"
           label="Digite sua senha"
-          autoComplete="on"
           control={control}
           rules={passwordRules}
         />
         <TextFieldHook
           name="confirmPassword"
           type="password"
-          autoComplete="on"
           label="Repita sua senha"
           control={control}
+          rules={validate(watchPassword, watchConfirmPassword)}
         />
         <Container>
           <CheckHook

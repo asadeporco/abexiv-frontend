@@ -6,6 +6,9 @@ import 'global/fonts/font.css'
 export const theme = createTheme(
   {
     typography: {
+      allVariants: {
+        color: '#000'
+      },
       fontFamily: 'SoleilRegular, Open Sans',
       fontWeightRegular: 600,
       fontSize: 21,
@@ -14,6 +17,7 @@ export const theme = createTheme(
         fontSize: 32,
         fontWeight: 800
       },
+
       button: {
         fontFamily: 'SoleilBold',
         fontSize: 21,
@@ -24,6 +28,9 @@ export const theme = createTheme(
     palette: {
       primary: {
         main: '#ffff'
+      },
+      text: {
+        primary: '#000000'
       }
     }
   },
