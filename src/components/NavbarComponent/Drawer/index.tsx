@@ -31,7 +31,7 @@ function DrawerComponent({ user }: DrawerProps) {
         </Box>
       ) : (
         <Container>
-          <Stack>
+          <Stack spacing={4}>
             <ButtonCustom onClick={() => navigate('../login')} size="small">
               Fazer Login
             </ButtonCustom>

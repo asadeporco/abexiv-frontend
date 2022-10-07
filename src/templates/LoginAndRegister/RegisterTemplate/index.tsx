@@ -18,19 +18,17 @@ export type RegisterFormProps = {
 }
 
 export function RegisterTemplate() {
-  const { control, handleSubmit, getValues, watch } =
-    useForm<RegisterFormProps>({
-      defaultValues: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-        check: false
-      }
-    })
+  const { control, handleSubmit, watch } = useForm<RegisterFormProps>({
+    defaultValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      check: false
+    }
+  })
   const watchPassword = watch('password')
   const watchConfirmPassword = watch('confirmPassword')
 
-  console.log('getValues: ', getValues().password)
   return (
     <Stack justifyContent="center">
       <ContainerForm

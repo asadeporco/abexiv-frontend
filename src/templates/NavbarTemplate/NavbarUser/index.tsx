@@ -104,7 +104,7 @@ export function NavbarUser({ user }: NavbarProps) {
                 </ButtonCustom>
               </Box>
             ) : (
-              <Stack direction="row">
+              <Stack direction="row" spacing={2}>
                 <ButtonCustom onClick={() => navigate('../login')} size="small">
                   Fazer Login
                 </ButtonCustom>

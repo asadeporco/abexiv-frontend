@@ -1,10 +1,8 @@
 import { Box, Grid, Stack, Typography } from '@mui/material'
 
 import { GridCustom } from 'components/GridCustom'
-import { green } from 'global/data/Green'
 
 export function HomeTemplate() {
-  console.log(green)
   return (
     <Stack textAlign="center">
       <GridCustom height="40hv" spacing={3}>
