@@ -34,7 +34,7 @@ export const CardCategories = () => {
           direction={{ xs: 'column', sm: 'row' }}
           justifyContent="center"
           alignItems="center"
-          spacing={2}
+          spacing={3}
         >
           {cardCategories.map((card) => (
             <CardCustom key={card.title} title={card.title} image={card.img} />
@@ -42,7 +42,7 @@ export const CardCategories = () => {
         </Stack>
       </Container>
       <Container>
-        <ButtonCustom color="info">Mais categorias</ButtonCustom>
+        <ButtonCustom disabled>Mais categorias</ButtonCustom>
       </Container>
     </Stack>
   )

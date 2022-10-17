@@ -11,6 +11,7 @@ type AskContainerProps = {
   date?: string
   questionTitle?: string
   questionDescription?: string
+  userLogged?: boolean
 }
 
 export function AskContainer({
@@ -18,9 +19,11 @@ export function AskContainer({
   avatar,
   date,
   questionTitle,
-  questionDescription
+  questionDescription,
+  userLogged
 }: AskContainerProps) {
   const { control } = useForm()
+  console.log(userLogged)
 
   return (
     <BoxQuestion spacing={3}>

@@ -5,7 +5,7 @@ import { AskContainer } from './AskContainer'
 import { ResponseTemplate } from './ResponseTemplate'
 import { SimilarQuestions } from './SimilarQuestions'
 
-export function QuestionTemplate() {
+export function QuestionTemplate({ userLogged }: any) {
   return (
     <Stack>
       <Container>
@@ -18,6 +18,7 @@ export function QuestionTemplate() {
                 questionTitle="dacueba"
                 questionDescription=""
                 date="10/10/2021"
+                userLogged={userLogged}
               />
               <ResponseTemplate
                 avatar=""

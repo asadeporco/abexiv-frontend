@@ -3,9 +3,9 @@ import { AppBarCustom } from 'components/AppbarCustom'
 import { GridCustom } from 'components/GridCustom'
 import { Grid, Stack, Box, Typography, Avatar } from '@mui/material'
 import { ButtonCustom } from 'components/ButtonCustom'
-import { SearchInput } from 'components/SearchInput'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { HomeLogo } from 'components/HomeLogo'
+import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
 
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -16,7 +16,7 @@ import { UserMenu } from 'components/NavbarComponent/UserMenu'
 import { useNavigate } from 'react-router-dom'
 
 interface NavbarProps {
-  user: boolean
+  user: any
 }
 
 export function NavbarUser({ user }: NavbarProps) {
@@ -74,7 +74,7 @@ export function NavbarUser({ user }: NavbarProps) {
           </Grid>
           <Grid item xs={4}>
             <Stack maxWidth={750}>
-              <SearchInput size="small" placeholder="pesquisar..." />
+              <AutoCompleteSearch />
             </Stack>
           </Grid>
           <Grid

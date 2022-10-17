@@ -3,7 +3,7 @@ import { Container } from '@mui/system'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { HomeLogo } from 'components/HomeLogo'
-import { SearchInput } from 'components/SearchInput'
+import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
 
 import { useNavigate } from 'react-router-dom'
 interface DrawerProps {
@@ -45,7 +45,7 @@ function DrawerComponent({ user }: DrawerProps) {
           </Stack>
         </Container>
       )}
-      <SearchInput size="small" placeholder="pesquisar..." />
+      <AutoCompleteSearch />
     </Stack>
   )
 }
