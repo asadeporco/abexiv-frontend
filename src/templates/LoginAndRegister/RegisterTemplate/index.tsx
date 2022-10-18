@@ -9,18 +9,13 @@ import { AnchorCustom } from 'components/AnchorCustom'
 
 import { defaultValues } from './functions/defaultValues'
 import { resolver } from './functions/resolver'
-import { submitForm } from './functions/submitForm'
+import { onSubmit } from './functions/onSubmit'
 import { useNavigate } from 'react-router-dom'
 
-export type RegisterFormProps = {
-  email: string
-  password: string
-  confirmPassword: string
-  check: boolean
-}
+import { UserProps } from 'global/types/UserProps'
 
 export function RegisterTemplate() {
-  const { control, handleSubmit } = useForm<RegisterFormProps>({
+  const { control, handleSubmit } = useForm<UserProps>({
     defaultValues,
     resolver
   })
@@ -29,7 +24,7 @@ export function RegisterTemplate() {
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit(submitForm)}
+        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
         spacing={4}
         justifyContent="center"
         textAlign="center"

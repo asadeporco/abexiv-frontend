@@ -8,7 +8,7 @@ import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
 import { AnchorCustom } from 'components/AnchorCustom'
 
-import { submitForm } from './functions/submitForm'
+import { onSubmit } from './functions/onSubmit'
 import { defaultValues } from './functions/defaultValues'
 
 export function LoginTemplate() {
@@ -18,7 +18,7 @@ export function LoginTemplate() {
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit(submitForm)}
+        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
         spacing={4}
         justifyContent="center"
         textAlign={'center'}
@@ -37,10 +37,11 @@ export function LoginTemplate() {
         />
         <Container>
           <CheckHook
-            name="check"
+            disabled
+            name="stayConnected"
             label="Mantenha-me conectado"
-            control={control}
             color="info"
+            control={control}
           />
         </Container>
         <Container>
