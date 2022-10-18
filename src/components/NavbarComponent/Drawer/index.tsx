@@ -1,16 +1,19 @@
 import { Box, Divider, Drawer, Stack, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 import { Container } from '@mui/system'
+
 import { AvatarCustom } from 'components/AvatarCustom'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { HomeLogo } from 'components/HomeLogo'
 import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
 
-import { useNavigate } from 'react-router-dom'
+import { QuestionProps } from 'global/types/QuestionProps'
 interface DrawerProps {
   user: boolean
+  data: QuestionProps[]
 }
 
-function DrawerComponent({ user }: DrawerProps) {
+function DrawerComponent({ user, data }: DrawerProps) {
   const navigate = useNavigate()
 
   return (
@@ -45,7 +48,7 @@ function DrawerComponent({ user }: DrawerProps) {
           </Stack>
         </Container>
       )}
-      <AutoCompleteSearch />
+      <AutoCompleteSearch options={data} />
     </Stack>
   )
 }
@@ -54,17 +57,23 @@ interface Props {
   mobileOpen: boolean
   handleDrawerToggle: () => void
   user: boolean
+  data: QuestionProps[]
 }
 
 const drawerWidth = 280
 
-export function DrawerCustom(props: Props) {
+export function DrawerCustom({
+  user,
+  data,
+  mobileOpen,
+  handleDrawerToggle
+}: Props) {
   return (
     <Box component="nav">
       <Drawer
         variant="temporary"
-        open={props.mobileOpen}
-        onClose={props.handleDrawerToggle}
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
         ModalProps={{
           keepMounted: true
         }}
@@ -76,7 +85,7 @@ export function DrawerCustom(props: Props) {
           }
         }}
       >
-        <DrawerComponent user={props.user} />
+        <DrawerComponent user={user} data={data} />
       </Drawer>
     </Box>
   )

@@ -8,11 +8,10 @@ import { CheckHook } from 'components/CheckHook'
 import { useForm } from 'react-hook-form'
 
 import { submitForm } from './functions/submitForm'
-
-export type LoginTemplateForm = {}
+import { defaultValues } from './functions/defaultValues'
 
 export function LoginTemplate() {
-  const { control, handleSubmit } = useForm<LoginTemplateForm>()
+  const { control, handleSubmit } = useForm({ defaultValues })
 
   return (
     <Stack justifyContent="center">
@@ -23,7 +22,11 @@ export function LoginTemplate() {
         textAlign={'center'}
       >
         <Typography variant="h1">Fazer login</Typography>
-        <TextFieldHook name="email" label="E-mail" control={control} />
+        <TextFieldHook
+          name="username"
+          label="Nome de usuário"
+          control={control}
+        />
         <TextFieldHook
           name="password"
           type="password"

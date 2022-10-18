@@ -5,7 +5,8 @@ import { ContainerForm } from 'components/ContainerForm'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
 
-import { emailRules, passwordRules, checkRules, validate } from './rules'
+import { defaultValues } from './functions/defaultValues'
+import { resolver } from './functions/resolver'
 import { submitForm } from './functions/submitForm'
 
 import { useForm } from 'react-hook-form'
@@ -18,16 +19,10 @@ export type RegisterFormProps = {
 }
 
 export function RegisterTemplate() {
-  const { control, handleSubmit, watch } = useForm<RegisterFormProps>({
-    defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      check: false
-    }
+  const { control, handleSubmit } = useForm<RegisterFormProps>({
+    defaultValues,
+    resolver
   })
-  const watchPassword = watch('password')
-  const watchConfirmPassword = watch('confirmPassword')
 
   return (
     <Stack justifyContent="center">
@@ -38,33 +33,43 @@ export function RegisterTemplate() {
         textAlign="center"
       >
         <Typography variant="h1">Registrar-se</Typography>
+
+        <Stack direction="row" spacing={3}>
+          <TextFieldHook
+            control={control}
+            name="first_name"
+            label="Primeiro nome"
+          />
+          <TextFieldHook control={control} name="last_name" label="Sobrenome" />
+        </Stack>
+
+        <TextFieldHook
+          name="username"
+          label="Digite seu nome de usuário"
+          control={control}
+        />
         <TextFieldHook
           name="email"
-          type="email"
-          label="Digite seu e-mail"
+          label="Digite seu email"
           control={control}
-          rules={emailRules}
         />
         <TextFieldHook
           name="password"
           type="password"
           label="Digite sua senha"
           control={control}
-          rules={passwordRules}
         />
         <TextFieldHook
           name="confirmPassword"
           type="password"
           label="Repita sua senha"
           control={control}
-          rules={validate(watchPassword, watchConfirmPassword)}
         />
         <Container>
           <CheckHook
             name="check"
             label="Ao marcar você aceita todos os termos de uso."
             control={control}
-            rules={checkRules}
             color="info"
           />
         </Container>

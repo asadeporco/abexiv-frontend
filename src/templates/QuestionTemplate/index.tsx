@@ -5,27 +5,19 @@ import { AskContainer } from './AskContainer'
 import { ResponseTemplate } from './ResponseTemplate'
 import { SimilarQuestions } from './SimilarQuestions'
 
-export function QuestionTemplate({ userLogged }: any) {
+import { useQuestion } from 'hooks/useQuestion'
+
+export function QuestionTemplate({ userLogged, questionId }: any) {
+  const { question, answers } = useQuestion(questionId)
+
   return (
     <Stack>
       <Container>
         <GridCustom spacing={10}>
           <Grid item xs={6}>
             <Stack spacing={10}>
-              <AskContainer
-                username="pedro"
-                avatar=""
-                questionTitle="dacueba"
-                questionDescription=""
-                date="10/10/2021"
-                userLogged={userLogged}
-              />
-              <ResponseTemplate
-                avatar=""
-                username="pedro alvares cabral"
-                response="boa pergunta"
-                date="10/10/2021"
-              />
+              <AskContainer question={question} userLogged={userLogged} />
+              <ResponseTemplate answers={answers} />
             </Stack>
           </Grid>
           <Grid item xs={6}>

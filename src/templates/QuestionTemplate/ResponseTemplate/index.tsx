@@ -1,26 +1,29 @@
-import { Typography } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
+
 import { BoxQuestion } from 'components/BoxQuestion'
 import { AvatarWithName } from 'components/AvatarWithName'
 
+import { AnswerProps } from 'global/types/AnswerProps'
+
 type ResponseTemplateProps = {
-  username: string
-  avatar: string
-  date?: string
-  response: string
+  answers: AnswerProps[]
 }
 
-export function ResponseTemplate({
-  username,
-  avatar,
-  date,
-  response
-}: ResponseTemplateProps) {
+export function ResponseTemplate({ answers }: ResponseTemplateProps) {
   return (
-    <BoxQuestion spacing={3}>
-      <AvatarWithName date={date} image={avatar} name={username} />
-      <Typography fontSize={14} color="#484747">
-        {response}
-      </Typography>
-    </BoxQuestion>
+    <Stack>
+      {answers?.map((answer: AnswerProps) => (
+        <BoxQuestion spacing={3} key={answer.id}>
+          <AvatarWithName
+            image=""
+            date={answer?.created_at}
+            name={answer?.user.username}
+          />
+          <Typography fontSize={17} color="#484747">
+            {answer?.description}
+          </Typography>
+        </BoxQuestion>
+      ))}
+    </Stack>
   )
 }

@@ -6,35 +6,28 @@ import { CommentTextField } from 'components/CommentTextField'
 import { useForm } from 'react-hook-form'
 
 type AskContainerProps = {
-  username: string
-  avatar: string
-  date?: string
-  questionTitle?: string
-  questionDescription?: string
+  question?: any
   userLogged?: boolean
 }
 
-export function AskContainer({
-  username,
-  avatar,
-  date,
-  questionTitle,
-  questionDescription,
-  userLogged
-}: AskContainerProps) {
+export function AskContainer({ question, userLogged }: AskContainerProps) {
   const { control } = useForm()
-  console.log(userLogged)
 
   return (
     <BoxQuestion spacing={3}>
-      <AvatarWithName date={date} image={avatar} name={username} />
-      <Typography component="p">{questionTitle}</Typography>
+      <AvatarWithName
+        image=""
+        date={question?.created_at}
+        name={question?.user.username}
+      />
+      <Typography component="p">{question?.title}</Typography>
       <Typography fontSize={17} color="#484747">
-        {questionDescription}
+        {question?.description}
       </Typography>
       <CommentTextField
         name="comment"
         label="Adicionar um comentário?"
+        disabled={!userLogged}
         control={control}
       />
     </BoxQuestion>

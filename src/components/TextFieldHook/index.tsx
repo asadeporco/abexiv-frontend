@@ -4,19 +4,12 @@ import { Controller } from 'react-hook-form'
 export type TextFieldHookProps = {
   name: string
   control: any
-  rules?: any
 } & TextFieldProps
 
-export function TextFieldHook({
-  name,
-  control,
-  rules,
-  ...props
-}: TextFieldHookProps) {
+export function TextFieldHook({ name, control, ...props }: TextFieldHookProps) {
   return (
     <Controller
       name={name}
-      rules={rules}
       control={control}
       render={({ field, fieldState: { error } }) => (
         <TextField

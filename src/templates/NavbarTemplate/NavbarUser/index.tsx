@@ -1,4 +1,8 @@
 import { MouseEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+
 import { AppBarCustom } from 'components/AppbarCustom'
 import { GridCustom } from 'components/GridCustom'
 import { Grid, Stack, Box, Typography, Avatar } from '@mui/material'
@@ -6,20 +10,17 @@ import { ButtonCustom } from 'components/ButtonCustom'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { HomeLogo } from 'components/HomeLogo'
 import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
-
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
-
 import { DrawerCustom } from 'components/NavbarComponent/Drawer'
-
 import { UserMenu } from 'components/NavbarComponent/UserMenu'
-import { useNavigate } from 'react-router-dom'
+
+import { QuestionProps } from 'global/types/QuestionProps'
 
 interface NavbarProps {
   user: any
+  data: QuestionProps[]
 }
 
-export function NavbarUser({ user }: NavbarProps) {
+export function NavbarUser({ user, data }: NavbarProps) {
   const navigate = useNavigate()
 
   //mobile menu
@@ -74,7 +75,7 @@ export function NavbarUser({ user }: NavbarProps) {
           </Grid>
           <Grid item xs={4}>
             <Stack maxWidth={750}>
-              <AutoCompleteSearch />
+              <AutoCompleteSearch options={data} />
             </Stack>
           </Grid>
           <Grid
@@ -142,6 +143,7 @@ export function NavbarUser({ user }: NavbarProps) {
         user={user}
       />
       <DrawerCustom
+        data={data}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
         user={user}

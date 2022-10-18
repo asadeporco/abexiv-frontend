@@ -1,26 +1,29 @@
 import { Autocomplete, TextField, TextFieldProps } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
-type AutocompleteSearchProps = {} & TextFieldProps
+import { QuestionProps } from 'global/types/QuestionProps'
 
-export function AutoCompleteSearch({ ...props }: AutocompleteSearchProps) {
+type AutocompleteSearchProps = { options: QuestionProps[] } & TextFieldProps
+
+export function AutoCompleteSearch({
+  options,
+  ...props
+}: AutocompleteSearchProps) {
   return (
     <Autocomplete
-      options={[
-        { label: 'teste', id: '1' },
-        { label: 'teste2', id: '2' }
-      ]}
+      options={options}
       noOptionsText="Nenhuma pergunta encontrada"
       color="secondary"
       size="small"
       onChange={(e, value) => {
         if (value) {
-          console.log(value.label)
+          console.log(value?.title)
         }
       }}
       forcePopupIcon={false}
       clearIcon={null}
       isOptionEqualToValue={(option, value) => option.id === value.id}
+      getOptionLabel={(option) => option.title}
       renderInput={(params) => (
         <TextField
           {...params}
