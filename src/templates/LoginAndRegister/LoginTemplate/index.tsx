@@ -1,17 +1,19 @@
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { Container, Stack, Typography } from '@mui/material'
 
 import { TextFieldHook } from 'components/TextFieldHook'
 import { ContainerForm } from 'components/ContainerForm'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
-
-import { useForm } from 'react-hook-form'
+import { AnchorCustom } from 'components/AnchorCustom'
 
 import { submitForm } from './functions/submitForm'
 import { defaultValues } from './functions/defaultValues'
 
 export function LoginTemplate() {
   const { control, handleSubmit } = useForm({ defaultValues })
+  const navigate = useNavigate()
 
   return (
     <Stack justifyContent="center">
@@ -48,7 +50,10 @@ export function LoginTemplate() {
         </Container>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
-            Não tem uma conta <a href="../register">clique aqui</a>
+            Não tem uma conta?{' '}
+            <AnchorCustom handleClick={() => navigate('../register')}>
+              clique aqui
+            </AnchorCustom>
           </Typography>
           <Typography fontSize={15}>e registre-se agora</Typography>
         </Container>
