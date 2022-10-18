@@ -5,7 +5,6 @@ import { Container } from '@mui/system'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { HomeLogo } from 'components/HomeLogo'
-import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
 
 import { QuestionProps } from 'global/types/QuestionProps'
 interface DrawerProps {
@@ -13,7 +12,7 @@ interface DrawerProps {
   data: QuestionProps[]
 }
 
-function DrawerComponent({ user, data }: DrawerProps) {
+function DrawerComponent({ user }: DrawerProps) {
   const navigate = useNavigate()
 
   return (
@@ -48,7 +47,6 @@ function DrawerComponent({ user, data }: DrawerProps) {
           </Stack>
         </Container>
       )}
-      <AutoCompleteSearch options={data} />
     </Stack>
   )
 }

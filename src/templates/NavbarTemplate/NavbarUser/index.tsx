@@ -54,7 +54,9 @@ export function NavbarUser({ user, data }: NavbarProps) {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <HomeLogo />
+            <Stack width="80%">
+              <AutoCompleteSearch options={data} />
+            </Stack>
             <IconButton
               color="inherit"
               edge="end"
