@@ -14,13 +14,13 @@ export function QuestionTemplate({ userLogged, questionId }: any) {
     <Stack>
       <Container>
         <GridCustom spacing={10}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <Stack spacing={10}>
               <AskContainer question={question} userLogged={userLogged} />
               <ResponseTemplate answers={answers} />
             </Stack>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <SimilarQuestions />
           </Grid>
         </GridCustom>

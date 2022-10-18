@@ -1,35 +1,58 @@
-import { Stack, Typography } from '@mui/material'
+import { Stack, Typography, Divider, Box } from '@mui/material'
 
 export function SimilarQuestions() {
+  const data = [
+    {
+      id: 1,
+      title: 'Como criar um componente no React?',
+      description:
+        'Estou com dificuldades em criar um componente no React, alguém pode me ajudar?',
+      tags: ['react', 'javascript', 'typescript'],
+      user: {
+        id: 1,
+        username: 'João da Silva',
+        image: 'https://avatars.githubusercontent.com/u/50770871?v=4'
+      }
+    },
+    {
+      id: 2,
+      title: 'Como criar um componente no React?',
+      description:
+        'Estou com dificuldades em criar um componente no React, alguém pode me ajudar?',
+      tags: ['react', 'javascript', 'typescript'],
+      user: {
+        id: 1,
+        username: 'João da Silva',
+        image: 'https://avatars.githubusercontent.com/u/50770871?v=4'
+      }
+    },
+    {
+      id: 3,
+      title: 'Como criar um componente no React?',
+      description:
+        'Estou com dificuldades em criar um componente no React, alguém pode me ajudar?',
+      tags: ['react', 'javascript', 'typescript'],
+      user: {
+        id: 1,
+        username: 'João da Silva',
+        image: 'https://avatars.githubusercontent.com/u/50770871?v=4'
+      }
+    }
+  ]
+
   return (
     <Stack p={3} height={'400px'} borderRadius={5} boxShadow={10}>
       <Typography m={4}>Mais perguntas</Typography>
-      <hr></hr>
+      <Divider />
       <Stack textAlign="start">
-        <Typography fontSize={20} color="#484747">
-          Quanto é 2 ao quadrado?
-        </Typography>
-        <hr></hr>
-        <Typography fontSize={20} color="#484747">
-          se x &gt;= 1 e y &gt; 2 qual o valor de x + y?
-        </Typography>
-        <hr></hr>
-        <Typography fontSize={20} color="#484747">
-          é possível programar em java?
-        </Typography>
-        <hr></hr>
-        <Typography fontSize={20} color="#484747">
-          como concertar a gambiarra que eu fiz?
-        </Typography>
-        <hr></hr>
-        <Typography fontSize={20} color="#484747">
-          Como se centraliza uma div?
-        </Typography>
-        <hr></hr>
-        <Typography fontSize={20} color="#484747">
-          rezolva a equação x + 2 - 4 = (2 + 2) * 3 / 4
-        </Typography>
-        <hr></hr>
+        {data?.map((question) => (
+          <Box key={question.id}>
+            <Typography fontSize={20} color="#484747">
+              {question.title}
+            </Typography>
+            <Divider />
+          </Box>
+        ))}
       </Stack>
     </Stack>
   )
