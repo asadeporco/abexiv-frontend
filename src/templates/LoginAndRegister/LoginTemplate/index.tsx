@@ -1,22 +1,24 @@
+import { useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { Container, Stack, Typography } from '@mui/material'
 
 import { TextFieldHook } from 'components/TextFieldHook'
 import { ContainerForm } from 'components/ContainerForm'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
+import { AnchorCustom } from 'components/AnchorCustom'
 
-import { useForm } from 'react-hook-form'
-
-import { submitForm } from './functions/submitForm'
+import { onSubmit } from './functions/onSubmit'
 import { defaultValues } from './functions/defaultValues'
 
 export function LoginTemplate() {
   const { control, handleSubmit } = useForm({ defaultValues })
+  const navigate = useNavigate()
 
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit(submitForm)}
+        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
         spacing={4}
         justifyContent="center"
         textAlign={'center'}
@@ -35,10 +37,11 @@ export function LoginTemplate() {
         />
         <Container>
           <CheckHook
-            name="check"
+            disabled
+            name="stayConnected"
             label="Mantenha-me conectado"
-            control={control}
             color="info"
+            control={control}
           />
         </Container>
         <Container>
@@ -48,7 +51,10 @@ export function LoginTemplate() {
         </Container>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
-            Não tem uma conta <a href="../register">clique aqui</a>
+            Não tem uma conta?{' '}
+            <AnchorCustom handleClick={() => navigate('../register')}>
+              clique aqui
+            </AnchorCustom>
           </Typography>
           <Typography fontSize={15}>e registre-se agora</Typography>
         </Container>

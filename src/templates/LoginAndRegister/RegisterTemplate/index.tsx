@@ -1,33 +1,30 @@
+import { useForm } from 'react-hook-form'
 import { Container, Stack, Typography } from '@mui/material'
 
 import { TextFieldHook } from 'components/TextFieldHook'
 import { ContainerForm } from 'components/ContainerForm'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { CheckHook } from 'components/CheckHook'
+import { AnchorCustom } from 'components/AnchorCustom'
 
 import { defaultValues } from './functions/defaultValues'
 import { resolver } from './functions/resolver'
-import { submitForm } from './functions/submitForm'
+import { onSubmit } from './functions/onSubmit'
+import { useNavigate } from 'react-router-dom'
 
-import { useForm } from 'react-hook-form'
-
-export type RegisterFormProps = {
-  email: string
-  password: string
-  confirmPassword: string
-  check: boolean
-}
+import { UserProps } from 'global/types/UserProps'
 
 export function RegisterTemplate() {
-  const { control, handleSubmit } = useForm<RegisterFormProps>({
+  const { control, handleSubmit } = useForm<UserProps>({
     defaultValues,
     resolver
   })
+  const navigate = useNavigate()
 
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit(submitForm)}
+        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
         spacing={4}
         justifyContent="center"
         textAlign="center"
@@ -80,7 +77,10 @@ export function RegisterTemplate() {
         </Container>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
-            Já tem uma conta <a href="../login">clique aqui</a>
+            Já tem uma conta?{' '}
+            <AnchorCustom handleClick={() => navigate('../login')}>
+              clique aqui
+            </AnchorCustom>
           </Typography>
           <Typography fontSize={15}>e faça login agora</Typography>
         </Container>

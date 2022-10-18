@@ -1,4 +1,5 @@
 export const defaultValues = {
   username: '',
-  password: ''
+  password: '',
+  stayConnected: true
 }
