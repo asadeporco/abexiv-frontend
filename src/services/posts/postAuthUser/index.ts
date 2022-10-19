@@ -2,8 +2,7 @@ import { api } from 'services/api'
 
 export async function postAuthUser(username: string, password?: string) {
   try {
-    const response = await api.post('/auth/', { username, password })
-
+    const response = await api.post('api-token-auth/', { username, password })
     if (response.status === 200) {
       return response.data
     } else {

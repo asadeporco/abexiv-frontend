@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react'
+import { Dispatch, MouseEvent, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
@@ -16,15 +16,22 @@ import { UserMenu } from 'components/NavbarComponent/UserMenu'
 import { QuestionProps } from 'global/types/QuestionProps'
 
 interface NavbarProps {
-  user: any
+  username: any
+  setToken: Dispatch<SetStateAction<string | undefined>>
+  setUsername: Dispatch<SetStateAction<string | undefined>>
   data: QuestionProps[]
 }
 
-export function NavbarUser({ user, data }: NavbarProps) {
+export function NavbarUser({
+  username,
+  setUsername,
+  setToken,
+  data
+}: NavbarProps) {
   const navigate = useNavigate()
 
   //mobile menu
-  const menuId = 'primary-search-account-menu-mobile'
+  const menuId = 'a'
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isMenuOpen = Boolean(anchorEl)
   const handleMenuOpen = (event: MouseEvent<HTMLButtonElement>) => {
@@ -32,6 +39,10 @@ export function NavbarUser({ user, data }: NavbarProps) {
   }
   const handleMenuClose = () => {
     setAnchorEl(null)
+    setUsername(undefined)
+    setToken(undefined)
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
   }
 
   //drawer
@@ -86,13 +97,13 @@ export function NavbarUser({ user, data }: NavbarProps) {
             sx={{ display: { sm: 'none', md: 'flex' } }}
             justifyContent={{ xs: 'end', sm: 'center' }}
           >
-            {user ? (
+            {username ? (
               <Box>
                 <ButtonCustom
                   sx={{ backgroundColor: 'transparent' }}
                   variant="text"
                 >
-                  <Typography>pedro69</Typography>
+                  <Typography>{username}</Typography>
                 </ButtonCustom>
                 <ButtonCustom
                   variant="text"
@@ -124,7 +135,7 @@ export function NavbarUser({ user, data }: NavbarProps) {
           <Grid item xs={1} sx={{ display: { sm: 'flex', md: 'none' } }}>
             <Box>
               <IconButton aria-controls={menuId} onClick={handleMenuOpen}>
-                {user ? (
+                {username ? (
                   <AvatarCustom
                     size={50}
                     image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
@@ -142,13 +153,13 @@ export function NavbarUser({ user, data }: NavbarProps) {
         id={menuId}
         handleMenuClose={handleMenuClose}
         anchorEl={anchorEl}
-        user={user}
+        user={username}
       />
       <DrawerCustom
         data={data}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
-        user={user}
+        user={username}
       />
     </Box>
   )

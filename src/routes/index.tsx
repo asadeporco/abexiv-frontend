@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useState } from 'react'
 
 import { NavbarUser } from 'templates/NavbarTemplate/NavbarUser'
 
@@ -10,6 +9,7 @@ import { Question } from 'pages/Question'
 
 import { green } from 'global/data/Green'
 import { useNavbar } from 'hooks/useNavbar'
+import { useUser } from 'hooks/useUser'
 
 console.log(green, 'color: white; background-color: green;')
 console.log(
@@ -18,18 +18,30 @@ console.log(
 )
 
 export function UserRoutes() {
-  const [user] = useState(false)
+  const { token, setToken, username, setUsername } = useUser()
   const { questions } = useNavbar()
 
   return (
     <BrowserRouter>
-      <NavbarUser data={questions} user={user} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/question/:questionId" element={<Question />} />
-      </Routes>
+      <NavbarUser
+        data={questions}
+        username={username}
+        setToken={setToken}
+        setUsername={setUsername}
+      />
+      {token ? (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/question/:questionId" element={<Question />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/question/:questionId" element={<Question />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      )}
     </BrowserRouter>
   )
 }
