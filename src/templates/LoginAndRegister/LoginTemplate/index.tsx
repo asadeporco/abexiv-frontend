@@ -10,15 +10,18 @@ import { AnchorCustom } from 'components/AnchorCustom'
 
 import { onSubmit } from './functions/onSubmit'
 import { defaultValues } from './functions/defaultValues'
+import { LoginProps } from 'global/types/LoginProps'
 
-export function LoginTemplate() {
+export function LoginTemplate({ setToken, setUsername }: LoginProps) {
   const { control, handleSubmit } = useForm({ defaultValues })
   const navigate = useNavigate()
 
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
+        onSubmit={handleSubmit((data) =>
+          onSubmit(data, navigate, setToken, setUsername)
+        )}
         spacing={4}
         justifyContent="center"
         textAlign={'center'}

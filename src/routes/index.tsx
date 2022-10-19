@@ -38,8 +38,14 @@ export function UserRoutes() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/question/:questionId" element={<Question />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={<Login setToken={setToken} setUsername={setUsername} />}
+          />
+          <Route
+            path="/register"
+            element={<Register setToken={setToken} setUsername={setUsername} />}
+          />
         </Routes>
       )}
     </BrowserRouter>

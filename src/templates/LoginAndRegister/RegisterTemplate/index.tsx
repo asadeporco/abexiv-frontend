@@ -13,8 +13,9 @@ import { onSubmit } from './functions/onSubmit'
 import { useNavigate } from 'react-router-dom'
 
 import { UserProps } from 'global/types/UserProps'
+import { LoginProps } from 'global/types/LoginProps'
 
-export function RegisterTemplate() {
+export function RegisterTemplate({ setToken, setUsername }: LoginProps) {
   const { control, handleSubmit } = useForm<UserProps>({
     defaultValues,
     resolver
@@ -24,7 +25,9 @@ export function RegisterTemplate() {
   return (
     <Stack justifyContent="center">
       <ContainerForm
-        onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
+        onSubmit={handleSubmit((data) =>
+          onSubmit(data, navigate, setToken, setUsername)
+        )}
         spacing={4}
         justifyContent="center"
         textAlign="center"
