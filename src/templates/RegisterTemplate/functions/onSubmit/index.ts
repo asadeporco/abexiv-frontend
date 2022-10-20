@@ -2,24 +2,29 @@ import { NavigateFunction } from 'react-router-dom'
 
 import { postCreateUser } from 'services/posts/postCreateUser'
 import { postAuthUser } from 'services/posts/postAuthUser'
-import { UserProps } from 'global/types/UserProps'
 import { Dispatch, SetStateAction } from 'react'
 
 export async function onSubmit(
-  data: UserProps,
+  data: any,
   navigate: NavigateFunction,
   setToken: Dispatch<SetStateAction<string | undefined>>,
   setUsername: Dispatch<SetStateAction<string | undefined>>
 ) {
-  const response = await postCreateUser(data)
+  const response = await postCreateUser(
+    data.username,
+    data.email,
+    data.password
+  )
 
-  if (response.status === 201) {
+  if (response) {
     const responseAuth = await postAuthUser(data.username, data.password)
-    setUsername(data.username)
 
-    if (responseAuth === 200) {
+    if (responseAuth) {
       localStorage.setItem('token', responseAuth.data.token)
       setToken(responseAuth.data.token)
+
+      localStorage.setItem('username', data.username)
+      setUsername(data.username)
       navigate('../')
     }
   } else {

@@ -16,9 +16,7 @@ export function AutoCompleteSearch({
       color="secondary"
       size="small"
       onChange={(e, value) => {
-        if (value) {
-          console.log(value?.title)
-        }
+        console.log(value?.title)
       }}
       forcePopupIcon={false}
       clearIcon={null}

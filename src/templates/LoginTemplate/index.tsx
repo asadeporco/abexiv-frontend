@@ -23,8 +23,6 @@ export function LoginTemplate({ setToken, setUsername }: LoginProps) {
           onSubmit(data, navigate, setToken, setUsername)
         )}
         spacing={4}
-        justifyContent="center"
-        textAlign={'center'}
       >
         <Typography variant="h1">Fazer login</Typography>
         <TextFieldHook
@@ -41,6 +39,7 @@ export function LoginTemplate({ setToken, setUsername }: LoginProps) {
         <Container>
           <CheckHook
             disabled
+            defaultChecked
             name="stayConnected"
             label="Mantenha-me conectado"
             color="info"

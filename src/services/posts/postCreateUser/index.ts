@@ -1,9 +1,12 @@
 import { api } from 'services/api'
-import { UserProps } from 'global/types/UserProps'
 
-export async function postCreateUser(data: UserProps) {
+export async function postCreateUser(
+  username: string,
+  email: string,
+  password: string
+) {
   try {
-    const response = await api.post('/user/', data)
+    const response = await api.post('/user/', { username, email, password })
 
     if (response.status === 201) {
       return response.data

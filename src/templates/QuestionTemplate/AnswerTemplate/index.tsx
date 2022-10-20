@@ -5,15 +5,15 @@ import { AvatarWithName } from 'components/AvatarWithName'
 
 import { AnswerProps } from 'global/types/AnswerProps'
 
-type ResponseTemplateProps = {
-  answers: AnswerProps[]
+type AnswerTemplateProps = {
+  answers?: AnswerProps[]
 }
 
-export function ResponseTemplate({ answers }: ResponseTemplateProps) {
+export function AnswerTemplate({ answers }: AnswerTemplateProps) {
   return (
-    <Stack>
-      {answers?.map((answer: AnswerProps) => (
-        <BoxQuestion spacing={3} key={answer.id}>
+    <Stack spacing={3}>
+      {answers?.map((answer: AnswerProps, key: number) => (
+        <BoxQuestion spacing={3} key={key}>
           <AvatarWithName
             image=""
             date={answer?.created_at}
