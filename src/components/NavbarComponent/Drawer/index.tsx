@@ -1,5 +1,6 @@
 import { Box, Drawer } from '@mui/material'
 import { QuestionProps } from 'global/types/QuestionProps'
+import { Dispatch, SetStateAction } from 'react'
 import { DrawerComponent } from './DrawerComponent'
 
 interface DrawerProps {
@@ -7,6 +8,8 @@ interface DrawerProps {
   handleDrawerToggle: () => void
   username: string | undefined
   data?: QuestionProps[]
+  id: string
+  setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
 }
 
 const drawerWidth = 280
@@ -15,7 +18,9 @@ export function DrawerCustom({
   username,
   data,
   mobileOpen,
-  handleDrawerToggle
+  handleDrawerToggle,
+  id,
+  setAnchorEl
 }: DrawerProps) {
   return (
     <Box component="nav">
@@ -34,7 +39,12 @@ export function DrawerCustom({
           }
         }}
       >
-        <DrawerComponent username={username} data={data} />
+        <DrawerComponent
+          username={username}
+          data={data}
+          menuId={id}
+          setAnchorEl={setAnchorEl}
+        />
       </Drawer>
     </Box>
   )

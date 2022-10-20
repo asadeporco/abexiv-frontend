@@ -8,8 +8,8 @@ type CardCustomProps = {
 export function CardCustom({ title, image }: CardCustomProps) {
   return (
     <Card sx={{ border: 'none', boxShadow: 'none' }}>
-      <Stack>
-        <Box maxHeight={225} component="img" src={image} />
+      <Stack alignItems="center">
+        <Box maxHeight={{ xs: 200, sm: 190 }} component="img" src={image} />
         <CardContent>
           <Typography variant="h5">{title}</Typography>
         </CardContent>

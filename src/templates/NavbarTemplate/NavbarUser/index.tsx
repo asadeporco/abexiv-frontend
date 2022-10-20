@@ -61,7 +61,7 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <Stack width="80%">
+            <Stack width="80%" p="12px">
               <AutoCompleteSearch
                 sentence={sentence}
                 setSentence={setSentence}
@@ -152,6 +152,8 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
         username={username}
       />
       <DrawerCustom
+        id={menuId}
+        setAnchorEl={setAnchorEl}
         data={searchQuestion}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
