@@ -1,16 +1,11 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import { NavbarUser } from 'templates/NavbarTemplate/NavbarUser'
-import { NotFoundPage } from 'components/NotFoundPage'
-
-import { HomePage } from 'pages/HomePage'
-import { LoginPage } from 'pages/LoginPage'
-import { RegisterPage } from 'pages/RegisterPage'
-import { QuestionPage } from 'pages/QuestionPage'
 
 import { green } from 'global/data/Green'
 import { useNavbar } from 'hooks/useNavbar'
 import { useUser } from 'hooks/useUser'
+import { NotUserRoutes } from './NotUserRoutes'
 
 console.log(green, 'color: white; background-color: green;')
 console.log(
@@ -31,28 +26,9 @@ export function UserRoutes() {
         setUsername={setUsername}
       />
       {token ? (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/question/:questionId" element={<QuestionPage />} />
-        </Routes>
+        <UserRoutes />
       ) : (
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/question/:questionId" element={<QuestionPage />} />
-          <Route
-            path="/login"
-            element={
-              <LoginPage setToken={setToken} setUsername={setUsername} />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RegisterPage setToken={setToken} setUsername={setUsername} />
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <NotUserRoutes setToken={setToken} setUsername={setUsername} />
       )}
     </BrowserRouter>
   )

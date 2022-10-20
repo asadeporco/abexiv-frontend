@@ -6,7 +6,7 @@ import { getAnswersFromQuestion } from 'services/gets/getAnswersFromQuestion'
 
 import { AnswerProps } from 'global/types/AnswerProps'
 
-export function useQuestion(id: number) {
+export function useQuestion(id: any) {
   const [question, setQuestion] = useState<QuestionProps>()
   const [answers, setAnswers] = useState<AnswerProps[]>([])
 
@@ -15,7 +15,7 @@ export function useQuestion(id: number) {
       setQuestion(data)
     })
     getAnswersFromQuestion(id).then((data) => {
-      setAnswers(data)
+      setAnswers(data.results)
     })
   }, [id])
 

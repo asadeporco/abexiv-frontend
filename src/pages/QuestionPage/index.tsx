@@ -1,14 +1,11 @@
 import { useParams } from 'react-router-dom'
+import { useQuestion } from 'hooks/useQuestion'
+
 import { QuestionTemplate } from 'templates/QuestionTemplate'
 
-type RouteParams = {
-  questionId: string
-}
+export function QuestionPage() {
+  const { questionId } = useParams()
+  const { question, answers } = useQuestion(questionId)
 
-export function QuestionPage({ userLogged }: any) {
-  const params = useParams<RouteParams>()
-
-  return (
-    <QuestionTemplate questionId={params.questionId} userLogged={userLogged} />
-  )
+  return <QuestionTemplate question={question} answers={answers} />
 }

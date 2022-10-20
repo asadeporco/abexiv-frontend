@@ -10,7 +10,7 @@ type AskContainerProps = {
   userLogged?: boolean
 }
 
-export function AskContainer({ question, userLogged }: AskContainerProps) {
+export function AskContainer({ question }: AskContainerProps) {
   const { control } = useForm()
 
   return (
@@ -18,7 +18,7 @@ export function AskContainer({ question, userLogged }: AskContainerProps) {
       <AvatarWithName
         image=""
         date={question?.created_at}
-        name={question?.user.username}
+        name={question?.user?.username}
       />
       <Typography component="p">{question?.title}</Typography>
       <Typography fontSize={17} color="#484747">
@@ -27,7 +27,6 @@ export function AskContainer({ question, userLogged }: AskContainerProps) {
       <CommentTextField
         name="comment"
         label="Adicionar um comentário?"
-        disabled={!userLogged}
         control={control}
       />
     </BoxQuestion>

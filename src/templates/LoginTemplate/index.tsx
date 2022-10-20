@@ -23,8 +23,6 @@ export function LoginTemplate({ setToken, setUsername }: LoginProps) {
           onSubmit(data, navigate, setToken, setUsername)
         )}
         spacing={4}
-        justifyContent="center"
-        textAlign={'center'}
       >
         <Typography variant="h1">Fazer login</Typography>
         <TextFieldHook

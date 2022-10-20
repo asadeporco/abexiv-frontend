@@ -2,22 +2,26 @@ import { Container, Grid, Stack } from '@mui/material'
 
 import { GridCustom } from 'components/GridCustom'
 import { AskContainer } from './AskContainer'
-import { ResponseTemplate } from './ResponseTemplate'
 import { SimilarQuestions } from './SimilarQuestions'
 
-import { useQuestion } from 'hooks/useQuestion'
+import { QuestionProps } from 'global/types/QuestionProps'
+import { AnswerProps } from 'global/types/AnswerProps'
+import { AnswerTemplate } from './AnswerTemplate'
 
-export function QuestionTemplate({ userLogged, questionId }: any) {
-  const { question, answers } = useQuestion(questionId)
+type QuestionTemplateProps = {
+  question?: QuestionProps
+  answers?: AnswerProps[]
+}
 
+export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
   return (
     <Stack>
       <Container>
-        <GridCustom spacing={10}>
+        <GridCustom alignItems="start" spacing={10}>
           <Grid item xs={12} sm={6}>
             <Stack spacing={10}>
-              <AskContainer question={question} userLogged={userLogged} />
-              <ResponseTemplate answers={answers} />
+              <AskContainer question={question} />
+              <AnswerTemplate answers={answers} />
             </Stack>
           </Grid>
           <Grid item xs={12} sm={6}>

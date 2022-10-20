@@ -12,6 +12,7 @@ export async function onSubmit(
 ) {
   try {
     const response = await postAuthUser(data.username, data.password)
+
     if (response) {
       localStorage.setItem('token', response.token)
       setToken(response.token)
