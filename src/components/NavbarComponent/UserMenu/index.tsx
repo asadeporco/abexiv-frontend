@@ -3,42 +3,34 @@ import { ButtonCustom } from 'components/ButtonCustom'
 
 import { useNavigate } from 'react-router-dom'
 
-interface Props {
+interface UserMenuProps {
   anchorEl: HTMLElement | null
   id: string
   isMenuOpen: boolean
   handleMenuClose: () => void
   handleLogoutMenuClose?: () => void
-  user: boolean
+  username: string | undefined
 }
 
 export function UserMenu({
   id,
-  user,
+  username,
   isMenuOpen,
   anchorEl,
   handleMenuClose,
   handleLogoutMenuClose
-}: Props) {
+}: UserMenuProps) {
   const menuId = id
   const navigate = useNavigate()
   return (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right'
-      }}
       id={menuId}
       keepMounted
-      transformOrigin={{
-        vertical: 'top',
-        horizontal: 'right'
-      }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {user ? (
+      {username ? (
         <Stack>
           <MenuItem disabled>Profile</MenuItem>
           <MenuItem onClick={handleLogoutMenuClose}>Sair</MenuItem>
