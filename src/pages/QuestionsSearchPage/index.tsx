@@ -10,7 +10,6 @@ export function QuestionsSearchPage() {
   const pageSize = '5'
 
   const { questions } = useQuestionsSearch(search, page, pageSize)
-  console.log(questions)
 
   return <QuestionsSearchTemplate questions={questions} />
 }

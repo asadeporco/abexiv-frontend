@@ -13,23 +13,19 @@ import { AutoCompleteSearch } from 'components/AutoCompleteSearch'
 import { DrawerCustom } from 'components/NavbarComponent/Drawer'
 import { UserMenu } from 'components/NavbarComponent/UserMenu'
 
-import { QuestionProps } from 'global/types/QuestionProps'
 import { handleLogoutMenuClose } from './functions/handleLogoutMenuClose'
 import { handleMenuClose } from './functions/handleMenuClose'
 import { handleMenuOpen } from './functions/handleMenuOpen'
+import { handleSearch } from './functions/handleSearch'
 interface NavbarProps {
   username: string | undefined
   setToken: Dispatch<SetStateAction<string | undefined>>
   setUsername: Dispatch<SetStateAction<string | undefined>>
-  data: QuestionProps[]
 }
 
-export function NavbarUser({
-  username,
-  setUsername,
-  setToken,
-  data
-}: NavbarProps) {
+export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
+  const [searchQuestion, setSearchQuestion] = useState()
+  const [sentence, setSentence] = useState('')
   const navigate = useNavigate()
 
   //mobile menu
@@ -66,7 +62,13 @@ export function NavbarUser({
             justifyContent="space-between"
           >
             <Stack width="80%">
-              <AutoCompleteSearch options={data} />
+              <AutoCompleteSearch
+                sentence={sentence}
+                setSentence={setSentence}
+                handleSearch={handleSearch}
+                options={searchQuestion}
+                setOptions={setSearchQuestion}
+              />
             </Stack>
             <IconButton
               color="inherit"
@@ -88,7 +90,13 @@ export function NavbarUser({
           </Grid>
           <Grid item xs={4}>
             <Stack maxWidth={750}>
-              <AutoCompleteSearch options={data} />
+              <AutoCompleteSearch
+                sentence={sentence}
+                setSentence={setSentence}
+                handleSearch={handleSearch}
+                options={searchQuestion}
+                setOptions={setSearchQuestion}
+              />
             </Stack>
           </Grid>
           <Grid
@@ -144,7 +152,7 @@ export function NavbarUser({
         username={username}
       />
       <DrawerCustom
-        data={data}
+        data={searchQuestion}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
         username={username}
