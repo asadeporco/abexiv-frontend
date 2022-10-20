@@ -12,18 +12,6 @@ const schema = yup.object().shape({
       'Nome de usuário deve conter apenas letras e números'
     ),
   email: yup.string().required('E-mail obrigatório').email('E-mail inválido'),
-  first_name: yup
-    .string()
-    .required('Nome obrigatório')
-    .min(3, 'Nome deve ter no mínimo 3 caracteres')
-    .max(20, 'Nome deve ter no máximo 20 caracteres')
-    .matches(/^[a-zA-Z]+$/, 'Nome deve conter apenas letras'),
-  last_name: yup
-    .string()
-    .required('Sobrenome obrigatório')
-    .min(3, 'Sobrenome deve ter no mínimo 3 caracteres')
-    .max(20, 'Sobrenome deve ter no máximo 20 caracteres')
-    .matches(/^[a-zA-Z]+$/, 'Sobrenome deve conter apenas letras'),
 
   password: yup
     .string()

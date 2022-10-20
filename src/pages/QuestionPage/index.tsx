@@ -5,7 +5,7 @@ type RouteParams = {
   questionId: string
 }
 
-export function Question({ userLogged }: any) {
+export function QuestionPage({ userLogged }: any) {
   const params = useParams<RouteParams>()
 
   return (

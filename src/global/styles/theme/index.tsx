@@ -14,7 +14,7 @@ export const theme = createTheme(
       fontSize: 21,
       h1: {
         fontFamily: 'SoleilBook',
-        fontSize: 32,
+        fontSize: '52px',
         fontWeight: 800
       },
 

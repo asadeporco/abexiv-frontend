@@ -32,7 +32,7 @@ export function AutoCompleteSearch({
           label="Pesquisar..."
           InputProps={{
             ...params.InputProps,
-            endAdornment: <SearchIcon color="info" />
+            endAdornment: <SearchIcon />
           }}
         />
       )}

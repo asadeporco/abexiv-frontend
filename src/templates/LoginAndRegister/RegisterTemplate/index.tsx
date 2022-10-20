@@ -34,15 +34,6 @@ export function RegisterTemplate({ setToken, setUsername }: LoginProps) {
       >
         <Typography variant="h1">Registrar-se</Typography>
 
-        <Stack direction="row" spacing={3}>
-          <TextFieldHook
-            control={control}
-            name="first_name"
-            label="Primeiro nome"
-          />
-          <TextFieldHook control={control} name="last_name" label="Sobrenome" />
-        </Stack>
-
         <TextFieldHook
           name="username"
           label="Digite seu nome de usuário"
