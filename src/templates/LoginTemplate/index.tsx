@@ -39,6 +39,7 @@ export function LoginTemplate({ setToken, setUsername }: LoginProps) {
         <Container>
           <CheckHook
             disabled
+            defaultChecked
             name="stayConnected"
             label="Mantenha-me conectado"
             color="info"

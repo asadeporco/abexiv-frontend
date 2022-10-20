@@ -17,7 +17,6 @@ export async function onSubmit(
   )
 
   if (response) {
-    console.log(data.username, data.password)
     const responseAuth = await postAuthUser(data.username, data.password)
 
     if (responseAuth) {

@@ -5,7 +5,6 @@ import { getQuestionsWithParams } from 'services/gets/getQuestionsWithParams'
 
 export function useQuestionsSearch(search: any, page: any, pageSize: any) {
   const [questions, setQuestions] = useState<QuestionProps[]>([])
-  console.log(search)
 
   const getQuestionsSearchFromApi = useCallback(() => {
     getQuestionsWithParams(search, page, pageSize).then((response) => {

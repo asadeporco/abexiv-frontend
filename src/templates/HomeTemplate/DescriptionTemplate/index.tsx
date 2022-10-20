@@ -20,7 +20,12 @@ export function DescriptionTemplate() {
           </Stack>
         </Grid>
         <Grid item xs={10} sm={5}>
-          <Box component="img" src="https://freesvg.org/img/erp.png" />
+          <Box
+            component="img"
+            height="600px"
+            width="500px"
+            src="https://freesvg.org/img/erp.png"
+          />
         </Grid>
       </GridCustom>
     </Stack>
