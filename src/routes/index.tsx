@@ -12,7 +12,6 @@ import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
 import { AskModalTemplate } from 'templates/AskModalTemplate'
 
 import { green } from 'global/data/Green'
-import { useNavbar } from 'hooks/useNavbar'
 import { useUser } from 'hooks/useUser'
 
 console.log(green, 'color: white; background-color: green;')
@@ -23,12 +22,10 @@ console.log(
 
 export function UserRoutes() {
   const { token, setToken, username, setUsername } = useUser()
-  const { questions } = useNavbar()
 
   return (
     <BrowserRouter>
       <NavbarUser
-        data={questions}
         username={username}
         setToken={setToken}
         setUsername={setUsername}

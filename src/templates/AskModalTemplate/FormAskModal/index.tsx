@@ -45,10 +45,11 @@ export function FormAskModal({ categories }: FormAskModalProps) {
       </Grid>
       <TextFieldHook
         multiline
-        rows={5}
+        rows={7}
         name="description"
         control={control}
         label="Descrição"
+        InputProps={{ style: { fontSize: 23 } }}
       />
     </Stack>
   )

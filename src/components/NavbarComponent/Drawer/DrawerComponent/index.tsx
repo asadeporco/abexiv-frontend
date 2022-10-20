@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 interface DrawerProps {
   username: string | undefined
-  data: QuestionProps[]
+  data?: QuestionProps[]
 }
 
 export function DrawerComponent({ username }: DrawerProps) {

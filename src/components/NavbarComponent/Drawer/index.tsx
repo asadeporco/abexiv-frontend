@@ -6,7 +6,7 @@ interface DrawerProps {
   mobileOpen: boolean
   handleDrawerToggle: () => void
   username: string | undefined
-  data: QuestionProps[]
+  data?: QuestionProps[]
 }
 
 const drawerWidth = 280

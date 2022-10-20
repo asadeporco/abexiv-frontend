@@ -21,9 +21,9 @@ export function DescriptionTemplate() {
         </Grid>
         <Grid item xs={10} sm={5}>
           <Box
+            flex={1}
             component="img"
-            height="600px"
-            width="500px"
+            width="100%"
             src="https://freesvg.org/img/erp.png"
           />
         </Grid>

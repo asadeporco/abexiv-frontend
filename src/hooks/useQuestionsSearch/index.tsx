@@ -8,7 +8,7 @@ export function useQuestionsSearch(search: any, page: any, pageSize: any) {
 
   const getQuestionsSearchFromApi = useCallback(() => {
     getQuestionsWithParams(search, page, pageSize).then((response) => {
-      setQuestions(response.results)
+      setQuestions(response?.results)
     })
   }, [search, page, pageSize])
 
