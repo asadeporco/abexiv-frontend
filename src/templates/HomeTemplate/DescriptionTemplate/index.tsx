@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
 
 import { GridCustom } from 'components/GridCustom'
 
@@ -20,7 +20,7 @@ export function DescriptionTemplate() {
           </Stack>
         </Grid>
         <Grid item xs={10} sm={5}>
-          <Box component="img" src="https://freesvg.org/img/erp.png" />
+          <img src="https://freesvg.org/img/erp.png" />
         </Grid>
       </GridCustom>
     </Stack>
