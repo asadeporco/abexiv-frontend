@@ -7,6 +7,7 @@ import { HomePage } from 'pages/HomePage'
 import { LoginPage } from 'pages/LoginPage'
 import { RegisterPage } from 'pages/RegisterPage'
 import { QuestionPage } from 'pages/QuestionPage'
+import { QuestionsSearchTemplate } from 'templates/QuestionSearchTemplate'
 
 import { green } from 'global/data/Green'
 import { useNavbar } from 'hooks/useNavbar'
@@ -51,6 +52,7 @@ export function UserRoutes() {
               <RegisterPage setToken={setToken} setUsername={setUsername} />
             }
           />
+          <Route path="/questions" element={<QuestionsSearchTemplate />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
