@@ -8,15 +8,17 @@ interface Props {
   id: string
   isMenuOpen: boolean
   handleMenuClose: () => void
+  handleLogoutMenuClose?: () => void
   user: boolean
 }
 
 export function UserMenu({
   id,
+  user,
   isMenuOpen,
-  handleMenuClose,
   anchorEl,
-  user
+  handleMenuClose,
+  handleLogoutMenuClose
 }: Props) {
   const menuId = id
   const navigate = useNavigate()
@@ -38,8 +40,8 @@ export function UserMenu({
     >
       {user ? (
         <Stack>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+          <MenuItem disabled>Profile</MenuItem>
+          <MenuItem onClick={handleLogoutMenuClose}>Sair</MenuItem>
         </Stack>
       ) : (
         <Stack>

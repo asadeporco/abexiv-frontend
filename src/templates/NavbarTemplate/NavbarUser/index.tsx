@@ -14,7 +14,8 @@ import { DrawerCustom } from 'components/NavbarComponent/Drawer'
 import { UserMenu } from 'components/NavbarComponent/UserMenu'
 
 import { QuestionProps } from 'global/types/QuestionProps'
-
+import { handleLogoutMenuClose } from './functions/handleLogoutMenuClose'
+import { handleMenuClose } from './functions/handleMenuClose'
 interface NavbarProps {
   username: any
   setToken: Dispatch<SetStateAction<string | undefined>>
@@ -31,18 +32,19 @@ export function NavbarUser({
   const navigate = useNavigate()
 
   //mobile menu
-  const menuId = 'a'
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isMenuOpen = Boolean(anchorEl)
+  const menuId = 'button-menu-item'
   const handleMenuOpen = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
-  const handleMenuClose = () => {
-    setAnchorEl(null)
-    setUsername(undefined)
-    setToken(undefined)
-    localStorage.removeItem('token')
-    localStorage.removeItem('username')
+
+  const handleLogout = () => {
+    handleLogoutMenuClose(navigate, setAnchorEl, setToken, setUsername)
+  }
+
+  const handleClose = () => {
+    handleMenuClose(setAnchorEl)
   }
 
   //drawer
@@ -102,19 +104,17 @@ export function NavbarUser({
                 <ButtonCustom
                   sx={{ backgroundColor: 'transparent' }}
                   variant="text"
-                >
-                  <Typography>{username}</Typography>
-                </ButtonCustom>
-                <ButtonCustom
-                  variant="text"
                   aria-controls={menuId}
                   aria-haspopup="true"
                   onClick={handleMenuOpen}
                 >
-                  <AvatarCustom
-                    size={50}
-                    image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
-                  />
+                  <Stack alignItems="center" direction="row" spacing={2}>
+                    <Typography>{username}</Typography>
+                    <AvatarCustom
+                      size={50}
+                      image="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
+                    />
+                  </Stack>
                 </ButtonCustom>
               </Box>
             ) : (
@@ -151,7 +151,8 @@ export function NavbarUser({
       <UserMenu
         isMenuOpen={isMenuOpen}
         id={menuId}
-        handleMenuClose={handleMenuClose}
+        handleLogoutMenuClose={handleLogout}
+        handleMenuClose={handleClose}
         anchorEl={anchorEl}
         user={username}
       />

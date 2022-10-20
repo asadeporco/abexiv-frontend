@@ -12,7 +12,7 @@ export async function onSubmit(data: UserProps, navigate: NavigateFunction) {
 
     if (responseAuth === 200) {
       localStorage.setItem('token', responseAuth.data.token)
-      navigate('../')
+      navigate('/')
     }
   } else {
     console.log('error')
