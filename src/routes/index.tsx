@@ -9,6 +9,8 @@ import { RegisterPage } from 'pages/RegisterPage'
 import { QuestionPage } from 'pages/QuestionPage'
 import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
 
+import { AskModalTemplate } from 'templates/AskModalTemplate'
+
 import { green } from 'global/data/Green'
 import { useNavbar } from 'hooks/useNavbar'
 import { useUser } from 'hooks/useUser'
@@ -35,6 +37,7 @@ export function UserRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/question/:questionId" element={<QuestionPage />} />
+          <Route path="/teste" element={<AskModalTemplate />} />
         </Routes>
       ) : (
         <Routes>
@@ -54,6 +57,7 @@ export function UserRoutes() {
           />
           <Route path="/questions" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
+          <Route path="/teste" element={<AskModalTemplate />} />
         </Routes>
       )}
     </BrowserRouter>

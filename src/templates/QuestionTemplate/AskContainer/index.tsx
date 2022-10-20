@@ -1,9 +1,6 @@
 import { Typography } from '@mui/material'
 import { AvatarWithName } from 'components/AvatarWithName'
 import { BoxQuestion } from 'components/BoxQuestion'
-import { CommentTextField } from 'components/CommentTextField'
-
-import { useForm } from 'react-hook-form'
 
 type AskContainerProps = {
   question?: any
@@ -11,8 +8,6 @@ type AskContainerProps = {
 }
 
 export function AskContainer({ question }: AskContainerProps) {
-  const { control } = useForm()
-
   return (
     <BoxQuestion spacing={3}>
       <AvatarWithName
@@ -24,11 +19,6 @@ export function AskContainer({ question }: AskContainerProps) {
       <Typography fontSize={17} color="#484747">
         {question?.description}
       </Typography>
-      <CommentTextField
-        name="comment"
-        label="Adicionar um comentário?"
-        control={control}
-      />
     </BoxQuestion>
   )
 }
