@@ -1,11 +1,11 @@
-import { Dispatch, MouseEvent, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 
 import { AppBarCustom } from 'components/AppbarCustom'
 import { GridCustom } from 'components/GridCustom'
-import { Grid, Stack, Box, Typography, Avatar } from '@mui/material'
+import { Grid, Stack, Typography, Avatar } from '@mui/material'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { HomeLogo } from 'components/HomeLogo'
@@ -16,8 +16,9 @@ import { UserMenu } from 'components/NavbarComponent/UserMenu'
 import { QuestionProps } from 'global/types/QuestionProps'
 import { handleLogoutMenuClose } from './functions/handleLogoutMenuClose'
 import { handleMenuClose } from './functions/handleMenuClose'
+import { handleMenuOpen } from './functions/handleMenuOpen'
 interface NavbarProps {
-  username: any
+  username: string | undefined
   setToken: Dispatch<SetStateAction<string | undefined>>
   setUsername: Dispatch<SetStateAction<string | undefined>>
   data: QuestionProps[]
@@ -35,9 +36,6 @@ export function NavbarUser({
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const isMenuOpen = Boolean(anchorEl)
   const menuId = 'button-menu-item'
-  const handleMenuOpen = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
 
   const handleLogout = () => {
     handleLogoutMenuClose(navigate, setAnchorEl, setToken, setUsername)
@@ -54,8 +52,8 @@ export function NavbarUser({
   }
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <AppBarCustom sx={{ margin: '0px' }}>
+    <Stack>
+      <AppBarCustom>
         <Grid
           item
           flexDirection="row"
@@ -100,20 +98,18 @@ export function NavbarUser({
             justifyContent={{ xs: 'end', sm: 'center' }}
           >
             {username ? (
-              <Box>
-                <ButtonCustom
-                  sx={{ backgroundColor: 'transparent' }}
-                  variant="text"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleMenuOpen}
-                >
-                  <Stack alignItems="center" direction="row" spacing={3}>
-                    <Typography>{username}</Typography>
-                    <AvatarCustom size={50} />
-                  </Stack>
-                </ButtonCustom>
-              </Box>
+              <ButtonCustom
+                sx={{ backgroundColor: 'transparent' }}
+                variant="text"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={(e) => handleMenuOpen({ e, setAnchorEl })}
+              >
+                <Stack alignItems="center" direction="row" spacing={3}>
+                  <Typography>{username}</Typography>
+                  <AvatarCustom size={50} />
+                </Stack>
+              </ButtonCustom>
             ) : (
               <Stack direction="row" spacing={2}>
                 <ButtonCustom onClick={() => navigate('../login')} size="small">
@@ -130,11 +126,12 @@ export function NavbarUser({
             )}
           </Grid>
           <Grid item xs={1} sx={{ display: { sm: 'flex', md: 'none' } }}>
-            <Box>
-              <IconButton aria-controls={menuId} onClick={handleMenuOpen}>
-                {username ? <AvatarCustom size={50} /> : <Avatar />}
-              </IconButton>
-            </Box>
+            <IconButton
+              aria-controls={menuId}
+              onClick={(e) => handleMenuOpen({ e, setAnchorEl })}
+            >
+              {username ? <AvatarCustom size={50} /> : <Avatar />}
+            </IconButton>
           </Grid>
         </GridCustom>
       </AppBarCustom>
@@ -144,14 +141,14 @@ export function NavbarUser({
         handleLogoutMenuClose={handleLogout}
         handleMenuClose={handleClose}
         anchorEl={anchorEl}
-        user={username}
+        username={username}
       />
       <DrawerCustom
         data={data}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
-        user={username}
+        username={username}
       />
-    </Box>
+    </Stack>
   )
 }
