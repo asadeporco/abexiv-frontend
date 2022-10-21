@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Container, Stack, MenuItem } from '@mui/material'
 
 import { TextFieldHook } from './components/TextFieldHook'
@@ -21,6 +22,7 @@ export function FormAskModalComponent({
   onSubmit
 }: FormAskModalComponentProps) {
   const { handleSubmit, control } = useForm({ defaultValues, resolver })
+  const navigate = useNavigate()
 
   const { categories } = useNavbarUserContext()
 
@@ -28,7 +30,9 @@ export function FormAskModalComponent({
     <Stack
       spacing={3}
       component="form"
-      onSubmit={handleSubmit((data) => onSubmit(token, data, setOpen))}
+      onSubmit={handleSubmit((data) =>
+        onSubmit(token, data, setOpen, navigate)
+      )}
     >
       <Grid container spacing={3}>
         <Grid item xs={6}>

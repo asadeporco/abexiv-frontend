@@ -4,11 +4,13 @@ import { postQuestion } from 'services/posts/postQuestion'
 export async function handleSubmit(
   token: string,
   data: QuestionProps,
-  setOpen: any
+  setOpen: any,
+  navigate: any
 ) {
   const response = await postQuestion(token, data)
 
   if (response) {
     setOpen(false)
+    navigate(`../questions/${response.id}`)
   }
 }

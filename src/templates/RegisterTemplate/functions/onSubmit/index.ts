@@ -18,10 +18,11 @@ export async function onSubmit(
 
   if (response) {
     const responseAuth = await postAuthUser(data.username, data.password)
+    console.log(responseAuth)
 
     if (responseAuth) {
-      localStorage.setItem('token', responseAuth.data.token)
-      setToken(responseAuth.data.token)
+      localStorage.setItem('token', responseAuth.token)
+      setToken(responseAuth.token)
 
       localStorage.setItem('username', data.username)
       setUsername(data.username)

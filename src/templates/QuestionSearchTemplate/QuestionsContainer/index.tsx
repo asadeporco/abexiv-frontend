@@ -14,27 +14,41 @@ export function QuestionsContainer({
 }: QuestionsSearchTemplateProps) {
   const navigate = useNavigate()
 
+  console.log(questions)
+
   return (
-    <Stack spacing={5}>
-      {questions?.map((question) => (
-        <a
-          onClick={() => navigate(`../questions/${question.id}`)}
-          style={{ cursor: 'pointer' }}
-          key={question.id}
-        >
-          <BoxQuestion spacing={3}>
-            <AvatarWithName
-              image=""
-              date={question.created_at}
-              name={question.user.username}
-            />
-            <Typography component="p">{question.title}</Typography>
-            <Typography fontSize={17} color="#484747">
-              {question.description}
-            </Typography>
-          </BoxQuestion>
-        </a>
-      ))}
+    <Stack spacing={7}>
+      {questions ? (
+        questions?.map((question) => (
+          <a
+            onClick={() => navigate(`../questions/${question.id}`)}
+            style={{ cursor: 'pointer' }}
+            key={question.id}
+          >
+            <BoxQuestion spacing={3}>
+              <AvatarWithName
+                image=""
+                date={question.created_at}
+                name={question.user.username}
+              />
+              <Stack spacing={2}>
+                <Typography fontSize={28} variant="h3">
+                  {question.title.substring(0, 25)}
+                </Typography>
+                <Typography fontSize={18} color="#5a5a5a">
+                  {question.description.substring(0, 250)}
+                </Typography>
+              </Stack>
+            </BoxQuestion>
+          </a>
+        ))
+      ) : (
+        <Stack>
+          <Typography variant="h1">
+            Desculpe, não conseguimos encontrar nenhuma pergunta :(
+          </Typography>
+        </Stack>
+      )}
     </Stack>
   )
 }

@@ -8,7 +8,7 @@ export async function postCreateUser(
   try {
     const response = await api.post('/user/', { username, email, password })
 
-    if (response.status === 201) {
+    if (response.status === 200) {
       return response.data
     }
   } catch (error) {
