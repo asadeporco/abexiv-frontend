@@ -21,11 +21,10 @@ import { useState } from 'react'
 import { useUserContext } from 'context/UserContext'
 
 interface NavbarTemplateProps {
-  categories?: any
   token?: string | null
 }
 
-export function NavbarTemplate({ token, categories }: NavbarTemplateProps) {
+export function NavbarTemplate({ token }: NavbarTemplateProps) {
   const [searchQuestion, setSearchQuestion] = useState()
   const [sentence, setSentence] = useState('')
   const navigate = useNavigate()
@@ -167,12 +166,7 @@ export function NavbarTemplate({ token, categories }: NavbarTemplateProps) {
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       />
-      <AskModalTemplate
-        token={token}
-        categories={categories}
-        open={openModal}
-        setOpen={setOpenModal}
-      />
+      <AskModalTemplate token={token} open={openModal} setOpen={setOpenModal} />
     </Stack>
   )
 }

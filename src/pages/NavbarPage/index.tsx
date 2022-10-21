@@ -1,12 +1,14 @@
 import { NavbarTemplate } from 'templates/NavbarTemplate'
-import { useNavbarUser } from 'hooks/useNavbarUser'
+import { NavbarUserProvider } from 'context/NavbarUser'
 
 type NavbarPageProps = {
   token: string | null
 }
 
 export function NavbarPage({ token }: NavbarPageProps) {
-  const { categories } = useNavbarUser(token)
-
-  return <NavbarTemplate categories={categories} token={token} />
+  return (
+    <NavbarUserProvider token={token}>
+      <NavbarTemplate token={token} />
+    </NavbarUserProvider>
+  )
 }

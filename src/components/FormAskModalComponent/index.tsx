@@ -2,11 +2,10 @@ import { useForm } from 'react-hook-form'
 import { Button, Grid, Container, Stack, MenuItem } from '@mui/material'
 
 import { TextFieldHook } from './components/TextFieldHook'
-import { CategoryProps } from 'global/types/CategoryProps'
 import { SelectInputLabel } from './components/SelectInputLabel'
+import { useNavbarUserContext } from 'context/NavbarUser'
 
 type FormAskModalComponentProps = {
-  categories?: CategoryProps[]
   defaultValues?: any
   resolver?: any
   onSubmit: any
@@ -15,7 +14,6 @@ type FormAskModalComponentProps = {
 }
 
 export function FormAskModalComponent({
-  categories,
   defaultValues,
   resolver,
   token,
@@ -23,6 +21,8 @@ export function FormAskModalComponent({
   onSubmit
 }: FormAskModalComponentProps) {
   const { handleSubmit, control } = useForm({ defaultValues, resolver })
+
+  const { categories } = useNavbarUserContext()
 
   return (
     <Stack
