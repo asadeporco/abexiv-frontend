@@ -7,7 +7,8 @@ export const theme = createTheme(
   {
     typography: {
       allVariants: {
-        color: '#000'
+        color: '#000',
+        wordWrap: 'break-word'
       },
       fontFamily: 'SoleilRegular, Open Sans',
       fontWeightRegular: 600,

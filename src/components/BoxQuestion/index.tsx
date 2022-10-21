@@ -7,7 +7,13 @@ type BoxQuestionProps = {
 
 export function BoxQuestion({ children, ...props }: BoxQuestionProps) {
   return (
-    <Stack textAlign="start" p={3} borderRadius={5} boxShadow={10} {...props}>
+    <Stack
+      textAlign="start"
+      p={4}
+      borderRadius={3}
+      border="2px solid"
+      {...props}
+    >
       {children}
     </Stack>
   )

@@ -23,7 +23,7 @@ export function AvatarWithName({
   return (
     <Stack direction="row" spacing={spacing ?? 1}>
       <Avatar src={image} sx={styleAvatar} />
-      <Stack>
+      <Stack spacing={-1}>
         <Typography fontSize={20}>{name}</Typography>
         <Typography color="#484747" fontSize={13}>
           enviado em {date}

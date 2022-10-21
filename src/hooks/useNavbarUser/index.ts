@@ -3,7 +3,6 @@ import { getCategories } from 'services/gets/getCategories'
 
 export function useNavbarUser(token?: string | null) {
   const [categories, setCategories] = useState([])
-  console.log(token)
 
   const getCategoriesDataFromApi = useCallback(async () => {
     if (token) {
