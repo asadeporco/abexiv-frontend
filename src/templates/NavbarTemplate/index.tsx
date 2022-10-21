@@ -18,25 +18,19 @@ import { handleMenuOpen } from './functions/handleMenuOpen'
 import { handleSearch } from './functions/handleSearch'
 import { AskModalTemplate } from './AskModalTemplate'
 import { useState } from 'react'
+import { useUserContext } from 'context/UserContext'
 
 interface NavbarTemplateProps {
-  username: string | null
-  setToken: any
-  setUsername: any
   categories?: any
   token?: string | null
 }
 
-export function NavbarTemplate({
-  username,
-  setUsername,
-  setToken,
-  token,
-  categories
-}: NavbarTemplateProps) {
+export function NavbarTemplate({ token, categories }: NavbarTemplateProps) {
   const [searchQuestion, setSearchQuestion] = useState()
   const [sentence, setSentence] = useState('')
   const navigate = useNavigate()
+
+  const { username, setUsername, setToken } = useUserContext()
 
   //mobile menu
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -165,7 +159,6 @@ export function NavbarTemplate({
         handleLogoutMenuClose={handleLogout}
         handleMenuClose={handleClose}
         anchorEl={anchorEl}
-        username={username}
       />
       <DrawerCustom
         id={menuId}
@@ -173,7 +166,6 @@ export function NavbarTemplate({
         data={searchQuestion}
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
-        username={username}
       />
       <AskModalTemplate
         token={token}

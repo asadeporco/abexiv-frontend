@@ -1,5 +1,6 @@
 import { Menu, MenuItem, Stack } from '@mui/material'
 import { ButtonCustom } from 'components/ButtonCustom'
+import { useUserContext } from 'context/UserContext'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -9,12 +10,10 @@ interface UserMenuProps {
   isMenuOpen: boolean
   handleMenuClose: () => void
   handleLogoutMenuClose?: () => void
-  username: any
 }
 
 export function UserMenu({
   id,
-  username,
   isMenuOpen,
   anchorEl,
   handleMenuClose,
@@ -22,6 +21,7 @@ export function UserMenu({
 }: UserMenuProps) {
   const menuId = id
   const navigate = useNavigate()
+  const { username } = useUserContext()
   return (
     <Menu
       anchorEl={anchorEl}

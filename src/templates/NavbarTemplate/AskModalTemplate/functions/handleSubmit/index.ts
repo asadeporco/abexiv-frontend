@@ -1,5 +1,3 @@
-import { redirect } from 'react-router-dom'
-
 import { QuestionProps } from 'global/types/QuestionProps'
 import { postQuestion } from 'services/posts/postQuestion'
 
@@ -12,6 +10,5 @@ export async function handleSubmit(
 
   if (response) {
     setOpen(false)
-    return redirect('/')
   }
 }

@@ -10,7 +10,7 @@ import { QuestionPage } from 'pages/QuestionPage'
 import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
 
 import { green } from 'global/data/Green'
-import { useUser } from 'hooks/useUser'
+import { useUserContext } from 'context/UserContext'
 
 console.log(green, 'color: white; background-color: green;')
 console.log(
@@ -19,16 +19,11 @@ console.log(
 )
 
 export function UserRoutes() {
-  const { token, setToken, username, setUsername } = useUser()
+  const { token, setToken, setUsername } = useUserContext()
 
   return (
     <BrowserRouter>
-      <NavbarPage
-        setToken={setToken}
-        setUsername={setUsername}
-        username={username}
-        token={token}
-      />
+      <NavbarPage token={token} />
       {token ? (
         <Routes>
           <Route path="/" element={<HomePage />} />
