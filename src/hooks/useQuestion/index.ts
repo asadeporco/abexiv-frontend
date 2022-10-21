@@ -5,19 +5,29 @@ import { QuestionProps } from 'global/types/QuestionProps'
 import { getAnswersFromQuestion } from 'services/gets/getAnswersFromQuestion'
 
 import { AnswerProps } from 'global/types/AnswerProps'
+import { getSimilarQuestion } from 'services/gets/getSimilarQuestions'
 
 export function useQuestion(id: any) {
   const [question, setQuestion] = useState<QuestionProps>()
   const [answers, setAnswers] = useState<AnswerProps[]>([])
+  const [similarQuestions, setSimilarQuestions] = useState<QuestionProps[]>([])
 
-  const getQuestionDataFromApi = useCallback(() => {
-    getQuestionDetail(id).then((data) => {
-      setQuestion(data)
-    })
-    getAnswersFromQuestion(id).then((data) => {
-      setAnswers(data.results)
-    })
-  }, [id])
+  const getQuestionDataFromApi = useCallback(async () => {
+    const responseGetQuestionDetail = await getQuestionDetail(id)
+    if (responseGetQuestionDetail) {
+      setQuestion(responseGetQuestionDetail)
+    }
+
+    const responseGetAnswersFromQuestion = await getAnswersFromQuestion(id)
+    if (responseGetAnswersFromQuestion) {
+      setAnswers(responseGetAnswersFromQuestion.results)
+    }
+
+    const responseGetSimilarQuestion = await getSimilarQuestion()
+    if (responseGetSimilarQuestion) {
+      setSimilarQuestions(responseGetSimilarQuestion.results)
+    }
+  }, [])
 
   useEffect(() => {
     getQuestionDataFromApi()
@@ -27,6 +37,8 @@ export function useQuestion(id: any) {
     question,
     setQuestion,
     answers,
+    similarQuestions,
+    setSimilarQuestions,
     setAnswers
   }
 }

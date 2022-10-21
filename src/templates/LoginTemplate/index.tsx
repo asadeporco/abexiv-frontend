@@ -13,14 +13,14 @@ import { defaultValues } from './functions/defaultValues'
 import { LoginProps } from 'global/types/LoginProps'
 
 export function LoginTemplate({ setToken, setUsername }: LoginProps) {
-  const { control, handleSubmit } = useForm({ defaultValues })
+  const { control, handleSubmit, setError } = useForm({ defaultValues })
   const navigate = useNavigate()
 
   return (
     <Stack justifyContent="center">
       <ContainerForm
         onSubmit={handleSubmit((data) =>
-          onSubmit(data, navigate, setToken, setUsername)
+          onSubmit(data, navigate, setToken, setUsername, setError)
         )}
         spacing={4}
       >
@@ -35,22 +35,26 @@ export function LoginTemplate({ setToken, setUsername }: LoginProps) {
           type="password"
           label="Senha"
           control={control}
+          FormHelperTextProps={{ sx: { textAlign: 'center' } }}
         />
-        <Container>
-          <CheckHook
-            disabled
-            defaultChecked
-            name="stayConnected"
-            label="Mantenha-me conectado"
-            color="info"
-            control={control}
-          />
-        </Container>
-        <Container>
-          <ButtonCustom color="info" type="submit">
-            Fazer Login
-          </ButtonCustom>
-        </Container>
+        <Stack>
+          <Container>
+            <CheckHook
+              disabled
+              defaultChecked
+              name="stayConnected"
+              label="Mantenha-me conectado"
+              color="info"
+              control={control}
+            />
+          </Container>
+
+          <Container>
+            <ButtonCustom color="info" type="submit">
+              Fazer Login
+            </ButtonCustom>
+          </Container>
+        </Stack>
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
             Não tem uma conta?{' '}

@@ -8,22 +8,23 @@ export async function onSubmit(
   data: UserProps,
   navigate: NavigateFunction,
   setToken: Dispatch<SetStateAction<string | undefined>>,
-  setUsername: Dispatch<SetStateAction<string | undefined>>
+  setUsername: Dispatch<SetStateAction<string | undefined>>,
+  setError: any
 ) {
-  try {
-    const response = await postAuthUser(data.username, data.password)
+  const response = await postAuthUser(data.username, data.password)
 
-    if (response) {
-      localStorage.setItem('token', response.token)
-      setToken(response.token)
+  if (response) {
+    localStorage.setItem('token', response.token)
+    setToken(response.token)
 
-      localStorage.setItem('username', data.username)
-      setUsername(data.username)
-      navigate('/')
-    } else {
-      console.log('error')
-    }
-  } catch (error) {
-    console.log(error)
+    localStorage.setItem('username', data.username)
+    setUsername(data.username)
+    navigate('/')
+  } else {
+    setError('username', { type: 'wrongPasswordOrUsername' })
+    setError('password', {
+      type: 'wrongPasswordOrUsername',
+      message: 'Usuário ou senha incorretos'
+    })
   }
 }

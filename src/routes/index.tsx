@@ -1,15 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NavbarUser } from 'templates/NavbarTemplate/NavbarUser'
 import { NotFoundPage } from 'components/NotFoundPage'
 
+import { NavbarPage } from 'pages/NavbarPage'
 import { HomePage } from 'pages/HomePage'
 import { LoginPage } from 'pages/LoginPage'
 import { RegisterPage } from 'pages/RegisterPage'
 import { QuestionPage } from 'pages/QuestionPage'
 import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
-
-import { AskModalTemplate } from 'templates/AskModalTemplate'
 
 import { green } from 'global/data/Green'
 import { useUser } from 'hooks/useUser'
@@ -25,16 +23,18 @@ export function UserRoutes() {
 
   return (
     <BrowserRouter>
-      <NavbarUser
-        username={username}
+      <NavbarPage
         setToken={setToken}
         setUsername={setUsername}
+        username={username}
+        token={token}
       />
       {token ? (
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/question/:questionId" element={<QuestionPage />} />
-          <Route path="/teste" element={<AskModalTemplate />} />
+          <Route path="/questions/:questionId" element={<QuestionPage />} />
+          <Route path="/questions" element={<QuestionsSearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       ) : (
         <Routes>
@@ -54,7 +54,6 @@ export function UserRoutes() {
           />
           <Route path="/questions" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/teste" element={<AskModalTemplate />} />
         </Routes>
       )}
     </BrowserRouter>

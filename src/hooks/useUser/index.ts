@@ -1,19 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export function useUser() {
-  const [username, setUsername] = useState<string | undefined>()
+  const [username, setUsername] = useState(() => {
+    const username = localStorage.getItem('username')
+    return username
+  })
 
-  const [token, setToken] = useState<string | undefined>()
-
-  useEffect(() => {
-    const tokenStorage = localStorage.getItem('token')
-    const usernameStorage = localStorage.getItem('username')
-
-    if (tokenStorage && usernameStorage) {
-      setToken(token)
-      setUsername(usernameStorage)
-    }
-  }, [username])
+  const [token, setToken] = useState(() => {
+    const token = localStorage.getItem('token')
+    return token
+  })
 
   return {
     username,

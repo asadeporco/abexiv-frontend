@@ -1,10 +1,11 @@
 import { api } from 'services/api'
 
-export async function postQuestion(token: string, data: any) {
+export async function getSimilarQuestion() {
   try {
-    const response = await api.post('/question/', data, {
-      headers: {
-        Authorization: `Token ${token}`
+    const response = await api.get(`/question`, {
+      params: {
+        page_size: 5,
+        page: 1
       }
     })
 
