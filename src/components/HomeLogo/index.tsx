@@ -8,9 +8,7 @@ export function HomeLogo() {
       <Typography variant="h1" fontSize={'55px'}>
         Σ
       </Typography>
-      <Typography fontSize={32} variant="h1">
-        Respondidos&#xb2;
-      </Typography>
+      <Typography variant="h5">Respondidos&#xb2;</Typography>
     </Button>
   )
 }
