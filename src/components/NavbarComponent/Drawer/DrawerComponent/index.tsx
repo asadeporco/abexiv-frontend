@@ -1,25 +1,28 @@
+import { Dispatch, SetStateAction } from 'react'
+
 import { Container, Divider, Stack, Typography } from '@mui/material'
+
 import { AvatarCustom } from 'components/AvatarCustom'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { HomeLogo } from 'components/HomeLogo'
+
+import { useUserContext } from 'context/UserContext'
+
 import { QuestionProps } from 'global/types/QuestionProps'
-import { Dispatch, SetStateAction } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import { handleMenuOpen } from 'templates/NavbarTemplate/functions/handleMenuOpen'
 
 interface DrawerProps {
-  username: string | undefined
   data?: QuestionProps[]
   menuId: string
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
 }
 
-export function DrawerComponent({
-  username,
-  menuId,
-  setAnchorEl
-}: DrawerProps) {
+export function DrawerComponent({ menuId, setAnchorEl }: DrawerProps) {
   const navigate = useNavigate()
+
+  const { username } = useUserContext()
 
   return (
     <Stack spacing={1}>

@@ -10,9 +10,11 @@ import { AnchorCustom } from 'components/AnchorCustom'
 
 import { onSubmit } from './functions/onSubmit'
 import { defaultValues } from './functions/defaultValues'
-import { LoginProps } from 'global/types/LoginProps'
+import { useUserContext } from 'context/UserContext'
 
-export function LoginTemplate({ setToken, setUsername }: LoginProps) {
+export function LoginTemplate() {
+  const { setToken, setUsername } = useUserContext()
+
   const { control, handleSubmit, setError } = useForm({ defaultValues })
   const navigate = useNavigate()
 

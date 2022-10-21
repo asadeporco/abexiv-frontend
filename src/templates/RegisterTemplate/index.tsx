@@ -13,14 +13,16 @@ import { onSubmit } from './functions/onSubmit'
 import { useNavigate } from 'react-router-dom'
 
 import { UserProps } from 'global/types/UserProps'
-import { LoginProps } from 'global/types/LoginProps'
+import { useUserContext } from 'context/UserContext'
 
-export function RegisterTemplate({ setToken, setUsername }: LoginProps) {
+export function RegisterTemplate() {
   const { control, handleSubmit } = useForm<UserProps>({
     defaultValues,
     resolver
   })
   const navigate = useNavigate()
+
+  const { setToken, setUsername } = useUserContext()
 
   return (
     <Stack justifyContent="center">

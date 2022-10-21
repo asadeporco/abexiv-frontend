@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Grid, Container, Stack, MenuItem } from '@mui/material'
 
 import { TextFieldHook } from './components/TextFieldHook'
-import { CategoryProps } from 'global/types/CategoryProps'
 import { SelectInputLabel } from './components/SelectInputLabel'
+import { useNavbarUserContext } from 'context/NavbarUser'
 
 type FormAskModalComponentProps = {
-  categories?: CategoryProps[]
   defaultValues?: any
   resolver?: any
   onSubmit: any
@@ -16,7 +15,6 @@ type FormAskModalComponentProps = {
 }
 
 export function FormAskModalComponent({
-  categories,
   defaultValues,
   resolver,
   token,
@@ -25,6 +23,8 @@ export function FormAskModalComponent({
 }: FormAskModalComponentProps) {
   const { handleSubmit, control } = useForm({ defaultValues, resolver })
   const navigate = useNavigate()
+
+  const { categories } = useNavbarUserContext()
 
   return (
     <Stack

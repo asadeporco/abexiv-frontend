@@ -15,14 +15,12 @@ type AskModelTemplateProps = {
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   token: any
-  categories?: any
 }
 
 export function AskModalTemplate({
   open,
   setOpen,
-  token,
-  categories
+  token
 }: AskModelTemplateProps) {
   return (
     <AskModalContainer
@@ -41,7 +39,6 @@ export function AskModalTemplate({
         <FormAskModalComponent
           setOpen={setOpen}
           token={token}
-          categories={categories}
           onSubmit={handleSubmit}
           resolver={resolver}
           defaultValues={defaultValues}

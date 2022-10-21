@@ -6,7 +6,6 @@ import { DrawerComponent } from './DrawerComponent'
 interface DrawerProps {
   mobileOpen: boolean
   handleDrawerToggle: () => void
-  username: any
   data?: QuestionProps[]
   id: string
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>
@@ -15,7 +14,6 @@ interface DrawerProps {
 const drawerWidth = 280
 
 export function DrawerCustom({
-  username,
   data,
   mobileOpen,
   handleDrawerToggle,
@@ -39,12 +37,7 @@ export function DrawerCustom({
           }
         }}
       >
-        <DrawerComponent
-          username={username}
-          data={data}
-          menuId={id}
-          setAnchorEl={setAnchorEl}
-        />
+        <DrawerComponent data={data} menuId={id} setAnchorEl={setAnchorEl} />
       </Drawer>
     </Box>
   )

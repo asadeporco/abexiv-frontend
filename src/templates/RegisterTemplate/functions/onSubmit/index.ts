@@ -7,8 +7,8 @@ import { Dispatch, SetStateAction } from 'react'
 export async function onSubmit(
   data: any,
   navigate: NavigateFunction,
-  setToken: Dispatch<SetStateAction<string | undefined>>,
-  setUsername: Dispatch<SetStateAction<string | undefined>>
+  setToken: Dispatch<SetStateAction<string | null>>,
+  setUsername: Dispatch<SetStateAction<string | null>>
 ) {
   const response = await postCreateUser(
     data.username,
