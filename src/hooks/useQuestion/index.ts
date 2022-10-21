@@ -18,7 +18,7 @@ export function useQuestion(id: any) {
 
     const responseGetAnswersFromQuestion = await getAnswersFromQuestion(id)
     if (responseGetAnswersFromQuestion) {
-      setAnswers(responseGetAnswersFromQuestion)
+      setAnswers(responseGetAnswersFromQuestion.results)
     }
   }, [])
 

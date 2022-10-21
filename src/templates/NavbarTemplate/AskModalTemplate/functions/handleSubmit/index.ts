@@ -1,17 +1,17 @@
+import { redirect } from 'react-router-dom'
+
 import { QuestionProps } from 'global/types/QuestionProps'
 import { postQuestion } from 'services/posts/postQuestion'
 
 export async function handleSubmit(
   token: string,
   data: QuestionProps,
-  navigate: any
+  setOpen: any
 ) {
   const response = await postQuestion(token, data)
-  console.log(response)
 
   if (response) {
-    navigate(`/questions/${response.id}`)
-  } else {
-    console.log('Erro ao postar pergunta')
+    setOpen(false)
+    return redirect('/')
   }
 }

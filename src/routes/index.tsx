@@ -32,7 +32,9 @@ export function UserRoutes() {
       {token ? (
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/question/:questionId" element={<QuestionPage />} />
+          <Route path="/questions/:questionId" element={<QuestionPage />} />
+          <Route path="/questions" element={<QuestionsSearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       ) : (
         <Routes>

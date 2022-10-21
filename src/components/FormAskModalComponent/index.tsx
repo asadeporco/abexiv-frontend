@@ -10,15 +10,16 @@ type FormAskModalComponentProps = {
   defaultValues?: any
   resolver?: any
   onSubmit: any
-  navigate: any
-  token?: string
+  setOpen: any
+  token: string
 }
 
 export function FormAskModalComponent({
   categories,
   defaultValues,
   resolver,
-  navigate,
+  token,
+  setOpen,
   onSubmit
 }: FormAskModalComponentProps) {
   const { handleSubmit, control } = useForm({ defaultValues, resolver })
@@ -27,7 +28,7 @@ export function FormAskModalComponent({
     <Stack
       spacing={3}
       component="form"
-      onSubmit={handleSubmit((data) => onSubmit(data, navigate))}
+      onSubmit={handleSubmit((data) => onSubmit(token, data, setOpen))}
     >
       <Grid container spacing={3}>
         <Grid item xs={6}>

@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import { SetStateAction, Dispatch } from 'react'
 import { Stack, Typography } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
@@ -25,8 +24,6 @@ export function AskModalTemplate({
   token,
   categories
 }: AskModelTemplateProps) {
-  const navigate = useNavigate()
-
   return (
     <AskModalContainer
       open={open}
@@ -42,9 +39,9 @@ export function AskModalTemplate({
           />
         </Stack>
         <FormAskModalComponent
+          setOpen={setOpen}
           token={token}
           categories={categories}
-          navigate={navigate}
           onSubmit={handleSubmit}
           resolver={resolver}
           defaultValues={defaultValues}

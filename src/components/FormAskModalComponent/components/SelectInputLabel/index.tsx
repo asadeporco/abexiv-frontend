@@ -1,5 +1,11 @@
+import {
+  InputLabel,
+  Select,
+  FormControl,
+  Typography,
+  Stack
+} from '@mui/material'
 import { Controller } from 'react-hook-form'
-import { InputLabel, Select, FormControl } from '@mui/material'
 import { ReactNode } from 'react'
 
 type SelectInputLabelProps = {
@@ -16,13 +22,26 @@ export function SelectInputLabel({
   label
 }: SelectInputLabelProps) {
   return (
-    <FormControl color="secondary" fullWidth>
-      <InputLabel shrink={false}>{label}</InputLabel>
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => <Select {...field}>{children}</Select>}
-      />
-    </FormControl>
+    <Controller
+      name={name}
+      control={control}
+      render={({ field, fieldState: { error } }) => (
+        <FormControl color="secondary" fullWidth>
+          <InputLabel>{label}</InputLabel>
+          <Stack>
+            <Select label="Categoria" {...field}>
+              {children}
+            </Select>
+            <Typography
+              sx={{ paddingLeft: '4px', margin: '5px' }}
+              color="error"
+              fontSize={18}
+            >
+              {error?.message}
+            </Typography>
+          </Stack>
+        </FormControl>
+      )}
+    />
   )
 }
