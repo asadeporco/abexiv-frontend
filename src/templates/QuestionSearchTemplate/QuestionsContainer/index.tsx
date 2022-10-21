@@ -18,7 +18,7 @@ export function QuestionsContainer({
 
   return (
     <Stack spacing={7}>
-      {questions ? (
+      {questions && questions.length > 0 ? (
         questions?.map((question) => (
           <a
             onClick={() => navigate(`../questions/${question.id}`)}
@@ -44,8 +44,8 @@ export function QuestionsContainer({
         ))
       ) : (
         <Stack>
-          <Typography variant="h1">
-            Desculpe, não conseguimos encontrar nenhuma pergunta :(
+          <Typography fontSize={24} variant="h1">
+            Nenhuma pergunta foi encontrada :(
           </Typography>
         </Stack>
       )}

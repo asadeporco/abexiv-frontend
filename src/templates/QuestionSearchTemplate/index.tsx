@@ -19,8 +19,10 @@ export function QuestionsSearchTemplate({
       <Typography variant="h1">Resultados da busca</Typography>
       <Stack direction="row">
         <Container maxWidth="md">
-          <QuestionsContainer questions={questions} />
-          <NavigationSearch count={10} />
+          <Stack alignItems="center" spacing={5}>
+            <QuestionsContainer questions={questions} />
+            <NavigationSearch count={10} />
+          </Stack>
         </Container>
         <Container maxWidth="xs">
           <Stack spacing={5}>
