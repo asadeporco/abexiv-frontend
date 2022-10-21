@@ -10,10 +10,15 @@ import { AnswerTemplate } from './AnswerTemplate'
 
 type QuestionTemplateProps = {
   question?: QuestionProps
+  similarQuestions?: QuestionProps[]
   answers?: AnswerProps[]
 }
 
-export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
+export function QuestionTemplate({
+  question,
+  answers,
+  similarQuestions
+}: QuestionTemplateProps) {
   return (
     <Stack>
       <Container>
@@ -25,7 +30,7 @@ export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
             </Stack>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <SimilarQuestions />
+            <SimilarQuestions similarQuestions={similarQuestions} />
           </Grid>
         </GridCustom>
       </Container>

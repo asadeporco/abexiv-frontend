@@ -1,18 +1,21 @@
-import { Stack, Typography, Divider, Box } from '@mui/material'
+import { Stack, Typography, Divider, Box, Container } from '@mui/material'
+import { QuestionProps } from 'global/types/QuestionProps'
 
-import { similarQuestionsData } from './data'
+type SimilarQuestionsProps = {
+  similarQuestions?: QuestionProps[]
+}
 
-export function SimilarQuestions() {
+export function SimilarQuestions({ similarQuestions }: SimilarQuestionsProps) {
   return (
     <Stack p={3} height={'400px'} borderRadius={5} boxShadow={10}>
       <Typography m={4}>Mais perguntas</Typography>
       <Divider />
       <Stack textAlign="start">
-        {similarQuestionsData?.map((question) => (
+        {similarQuestions?.map((question: QuestionProps) => (
           <Box key={question.id}>
-            <Typography fontSize={20} color="#484747">
-              {question.title}
-            </Typography>
+            <Container>
+              <Typography fontSize={20}>{question.title}</Typography>
+            </Container>
             <Divider />
           </Box>
         ))}
