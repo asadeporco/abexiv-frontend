@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NavbarUser } from 'templates/NavbarTemplate/NavbarUser'
+import { NavbarUser } from 'templates/NavbarTemplate'
 import { NotFoundPage } from 'components/NotFoundPage'
 
 import { HomePage } from 'pages/HomePage'
@@ -8,8 +8,6 @@ import { LoginPage } from 'pages/LoginPage'
 import { RegisterPage } from 'pages/RegisterPage'
 import { QuestionPage } from 'pages/QuestionPage'
 import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
-
-import { AskModalTemplate } from 'templates/AskModalTemplate'
 
 import { green } from 'global/data/Green'
 import { useUser } from 'hooks/useUser'
@@ -34,7 +32,6 @@ export function UserRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/question/:questionId" element={<QuestionPage />} />
-          <Route path="/teste" element={<AskModalTemplate />} />
         </Routes>
       ) : (
         <Routes>
@@ -54,7 +51,6 @@ export function UserRoutes() {
           />
           <Route path="/questions" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
-          <Route path="/teste" element={<AskModalTemplate />} />
         </Routes>
       )}
     </BrowserRouter>

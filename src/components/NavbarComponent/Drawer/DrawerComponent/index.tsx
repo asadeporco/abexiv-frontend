@@ -5,7 +5,7 @@ import { HomeLogo } from 'components/HomeLogo'
 import { QuestionProps } from 'global/types/QuestionProps'
 import { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { handleMenuOpen } from 'templates/NavbarTemplate/NavbarUser/functions/handleMenuOpen'
+import { handleMenuOpen } from 'templates/NavbarTemplate/functions/handleMenuOpen'
 
 interface DrawerProps {
   username: string | undefined

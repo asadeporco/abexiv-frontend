@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Grid, Stack, Avatar } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 
 import { AppBarCustom } from 'components/AppbarCustom'
 import { GridCustom } from 'components/GridCustom'
-import { Grid, Stack, Typography, Avatar } from '@mui/material'
 import { ButtonCustom } from 'components/ButtonCustom'
 import { AvatarCustom } from 'components/AvatarCustom'
 import { HomeLogo } from 'components/HomeLogo'
@@ -17,6 +17,7 @@ import { handleLogoutMenuClose } from './functions/handleLogoutMenuClose'
 import { handleMenuClose } from './functions/handleMenuClose'
 import { handleMenuOpen } from './functions/handleMenuOpen'
 import { handleSearch } from './functions/handleSearch'
+import { AskModalTemplate } from './AskModalTemplate'
 interface NavbarProps {
   username: string | undefined
   setToken: Dispatch<SetStateAction<string | undefined>>
@@ -46,6 +47,8 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
+
+  const [openModal, setOpenModal] = useState(false)
 
   return (
     <Stack>
@@ -106,18 +109,22 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
             justifyContent={{ xs: 'end', sm: 'center' }}
           >
             {username ? (
-              <ButtonCustom
-                sx={{ backgroundColor: 'transparent' }}
-                variant="text"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={(e) => handleMenuOpen({ e, setAnchorEl })}
-              >
-                <Stack alignItems="center" direction="row" spacing={3}>
-                  <Typography>{username}</Typography>
-                  <AvatarCustom size={50} />
-                </Stack>
-              </ButtonCustom>
+              <Stack spacing={2} alignItems="center" direction="row">
+                <ButtonCustom onClick={() => setOpenModal(true)} color="info">
+                  Perguntar
+                </ButtonCustom>
+                <ButtonCustom
+                  sx={{ backgroundColor: 'transparent' }}
+                  variant="text"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={(e) => handleMenuOpen({ e, setAnchorEl })}
+                >
+                  <Stack alignItems="center" direction="row" spacing={3}>
+                    <AvatarCustom size={50} />
+                  </Stack>
+                </ButtonCustom>
+              </Stack>
             ) : (
               <Stack direction="row" spacing={2}>
                 <ButtonCustom onClick={() => navigate('../login')} size="small">
@@ -159,6 +166,7 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
         handleDrawerToggle={handleDrawerToggle}
         username={username}
       />
+      <AskModalTemplate open={openModal} setOpen={setOpenModal} />
     </Stack>
   )
 }

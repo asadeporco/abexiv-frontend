@@ -1,9 +1,9 @@
-import { createTheme, responsiveFontSizes } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import { ptBR } from '@mui/material/locale'
 
 import 'global/fonts/font.css'
 
-const styles = createTheme(
+export const theme = createTheme(
   {
     typography: {
       allVariants: {
@@ -36,5 +36,3 @@ const styles = createTheme(
   },
   ptBR
 )
-
-export const theme = responsiveFontSizes(styles)

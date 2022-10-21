@@ -7,8 +7,11 @@ export async function postQuestion(token: string, data: any) {
         Authorization: `Token ${token}`
       }
     })
-
-    return response.data
+    if (response.status === 201) {
+      return response.data
+    } else {
+      console.log('error')
+    }
   } catch (error) {
     console.log(error)
   }
