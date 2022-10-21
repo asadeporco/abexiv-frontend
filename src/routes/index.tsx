@@ -19,7 +19,7 @@ console.log(
 )
 
 export function UserRoutes() {
-  const { token, setToken, setUsername } = useUserContext()
+  const { token } = useUserContext()
 
   return (
     <BrowserRouter>
@@ -35,18 +35,8 @@ export function UserRoutes() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/questions/:questionId" element={<QuestionPage />} />
-          <Route
-            path="/login"
-            element={
-              <LoginPage setToken={setToken} setUsername={setUsername} />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RegisterPage setToken={setToken} setUsername={setUsername} />
-            }
-          />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/questions" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

@@ -7,8 +7,8 @@ import { Dispatch, SetStateAction } from 'react'
 export async function onSubmit(
   data: UserProps,
   navigate: NavigateFunction,
-  setToken: Dispatch<SetStateAction<string | undefined>>,
-  setUsername: Dispatch<SetStateAction<string | undefined>>,
+  setToken: Dispatch<SetStateAction<string | null>>,
+  setUsername: Dispatch<SetStateAction<string | null>>,
   setError: any
 ) {
   const response = await postAuthUser(data.username, data.password)
