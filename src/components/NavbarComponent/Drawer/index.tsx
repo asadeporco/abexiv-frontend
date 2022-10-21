@@ -6,7 +6,7 @@ import { DrawerComponent } from './DrawerComponent'
 interface DrawerProps {
   mobileOpen: boolean
   handleDrawerToggle: () => void
-  username: string | undefined
+  username: any
   data?: QuestionProps[]
   id: string
   setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>

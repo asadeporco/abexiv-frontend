@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Button, Grid, Container, Stack } from '@mui/material'
+import { Button, Grid, Container, Stack, MenuItem } from '@mui/material'
 
 import { TextFieldHook } from './components/TextFieldHook'
 import { CategoryProps } from 'global/types/CategoryProps'
@@ -11,7 +11,7 @@ type FormAskModalComponentProps = {
   resolver?: any
   onSubmit: any
   navigate: any
-  token: string
+  token?: string
 }
 
 export function FormAskModalComponent({
@@ -34,7 +34,15 @@ export function FormAskModalComponent({
           <TextFieldHook name="title" control={control} label="Título" />
         </Grid>
         <Grid item xs={6}>
-          <SelectInputLabel options={categories} control={control} />
+          <SelectInputLabel name="category" label="Categoria" control={control}>
+            {categories?.map((category) => {
+              return (
+                <MenuItem key={category.id} value={category.id}>
+                  {category.name}
+                </MenuItem>
+              )
+            })}
+          </SelectInputLabel>
         </Grid>
       </Grid>
       <TextFieldHook

@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Grid, Stack, Avatar } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -18,13 +17,23 @@ import { handleMenuClose } from './functions/handleMenuClose'
 import { handleMenuOpen } from './functions/handleMenuOpen'
 import { handleSearch } from './functions/handleSearch'
 import { AskModalTemplate } from './AskModalTemplate'
-interface NavbarProps {
-  username: string | undefined
-  setToken: Dispatch<SetStateAction<string | undefined>>
-  setUsername: Dispatch<SetStateAction<string | undefined>>
+import { useState } from 'react'
+
+interface NavbarTemplateProps {
+  username: string | null
+  setToken: any
+  setUsername: any
+  categories?: any
+  token?: string | null
 }
 
-export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
+export function NavbarTemplate({
+  username,
+  setUsername,
+  setToken,
+  token,
+  categories
+}: NavbarTemplateProps) {
   const [searchQuestion, setSearchQuestion] = useState()
   const [sentence, setSentence] = useState('')
   const navigate = useNavigate()
@@ -166,7 +175,12 @@ export function NavbarUser({ username, setUsername, setToken }: NavbarProps) {
         handleDrawerToggle={handleDrawerToggle}
         username={username}
       />
-      <AskModalTemplate open={openModal} setOpen={setOpenModal} />
+      <AskModalTemplate
+        token={token}
+        categories={categories}
+        open={openModal}
+        setOpen={setOpenModal}
+      />
     </Stack>
   )
 }

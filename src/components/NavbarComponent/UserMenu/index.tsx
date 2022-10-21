@@ -9,7 +9,7 @@ interface UserMenuProps {
   isMenuOpen: boolean
   handleMenuClose: () => void
   handleLogoutMenuClose?: () => void
-  username: string | undefined
+  username: any
 }
 
 export function UserMenu({

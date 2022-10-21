@@ -10,14 +10,17 @@ export function useQuestion(id: any) {
   const [question, setQuestion] = useState<QuestionProps>()
   const [answers, setAnswers] = useState<AnswerProps[]>([])
 
-  const getQuestionDataFromApi = useCallback(() => {
-    getQuestionDetail(id).then((data) => {
-      setQuestion(data)
-    })
-    getAnswersFromQuestion(id).then((data) => {
-      setAnswers(data.results)
-    })
-  }, [id])
+  const getQuestionDataFromApi = useCallback(async () => {
+    const responseGetQuestionDetail = await getQuestionDetail(id)
+    if (responseGetQuestionDetail) {
+      setQuestion(responseGetQuestionDetail)
+    }
+
+    const responseGetAnswersFromQuestion = await getAnswersFromQuestion(id)
+    if (responseGetAnswersFromQuestion) {
+      setAnswers(responseGetAnswersFromQuestion)
+    }
+  }, [])
 
   useEffect(() => {
     getQuestionDataFromApi()

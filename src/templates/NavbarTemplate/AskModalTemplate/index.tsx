@@ -15,9 +15,16 @@ import { handleSubmit } from './functions/handleSubmit'
 type AskModelTemplateProps = {
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
+  token: any
+  categories?: any
 }
 
-export function AskModalTemplate({ open, setOpen }: AskModelTemplateProps) {
+export function AskModalTemplate({
+  open,
+  setOpen,
+  token,
+  categories
+}: AskModelTemplateProps) {
   const navigate = useNavigate()
 
   return (
@@ -35,7 +42,8 @@ export function AskModalTemplate({ open, setOpen }: AskModelTemplateProps) {
           />
         </Stack>
         <FormAskModalComponent
-          token="1"
+          token={token}
+          categories={categories}
           navigate={navigate}
           onSubmit={handleSubmit}
           resolver={resolver}

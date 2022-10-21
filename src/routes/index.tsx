@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NavbarUser } from 'templates/NavbarTemplate'
 import { NotFoundPage } from 'components/NotFoundPage'
 
+import { NavbarPage } from 'pages/NavbarPage'
 import { HomePage } from 'pages/HomePage'
 import { LoginPage } from 'pages/LoginPage'
 import { RegisterPage } from 'pages/RegisterPage'
@@ -23,10 +23,11 @@ export function UserRoutes() {
 
   return (
     <BrowserRouter>
-      <NavbarUser
-        username={username}
+      <NavbarPage
         setToken={setToken}
         setUsername={setUsername}
+        username={username}
+        token={token}
       />
       {token ? (
         <Routes>
