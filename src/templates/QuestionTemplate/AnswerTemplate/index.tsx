@@ -23,7 +23,9 @@ export function AnswerTemplate({ answers }: AnswerTemplateProps) {
               </Typography>
             </Stack>
             <Stack>
-              <Typography fontSize={16}>{answer.description}</Typography>
+              <Typography fontSize={16} color="#484747">
+                {answer.description}
+              </Typography>
             </Stack>
           </Stack>
         </Stack>
