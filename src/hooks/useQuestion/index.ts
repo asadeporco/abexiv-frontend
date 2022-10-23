@@ -27,7 +27,7 @@ export function useQuestion(id: any) {
     if (responseGetSimilarQuestion) {
       setSimilarQuestions(responseGetSimilarQuestion.results)
     }
-  }, [])
+  }, [id])
 
   useEffect(() => {
     getQuestionDataFromApi()

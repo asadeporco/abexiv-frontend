@@ -12,7 +12,7 @@ export function useNavbarUser(token?: string | null) {
         setCategories(results)
       }
     }
-  }, [])
+  }, [token])
 
   useEffect(() => {
     getCategoriesDataFromApi()

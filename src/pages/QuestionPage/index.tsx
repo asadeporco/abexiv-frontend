@@ -6,6 +6,7 @@ import { QuestionTemplate } from 'templates/QuestionTemplate'
 export function QuestionPage() {
   const [params] = useSearchParams()
   const questionId = params.get('q')
+  console.log(questionId)
 
   const { question, answers } = useQuestion(questionId)
 

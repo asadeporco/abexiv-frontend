@@ -18,7 +18,7 @@ type QuestionTemplateProps = {
 export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
   return (
     <GridCustom alignItems="start" spacing={10}>
-      <Grid item xs={12} sm={5}>
+      <Grid item xs={10} sm={5}>
         <Stack spacing={10}>
           <BoxQuestion spacing={5}>
             <AskContainer question={question} />
@@ -27,7 +27,7 @@ export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
           </BoxQuestion>
         </Stack>
       </Grid>
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={8} sm={3}>
         <QuestionsCardCustom title="titulo generico 29" />
       </Grid>
     </GridCustom>
