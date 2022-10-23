@@ -28,7 +28,8 @@ export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
         </Stack>
       </Grid>
       <Grid item xs={8} sm={3}>
-        <QuestionsCardCustom title="titulo generico 29" />
+        <QuestionsCardCustom title="Perguntas em destaque" />
+        <QuestionsCardCustom title="Perguntas relacionadas" />
       </Grid>
     </GridCustom>
   )

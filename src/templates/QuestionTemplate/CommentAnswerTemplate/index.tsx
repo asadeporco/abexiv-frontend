@@ -4,7 +4,7 @@ export function CommentAnswerTemplate() {
   return (
     <Stack>
       <Typography paddingLeft="15px" fontSize={15}>
-        Responda a questão e ganhe nada
+        Responda a pergunta do usuário abaixo
       </Typography>
       <TextField
         color="secondary"

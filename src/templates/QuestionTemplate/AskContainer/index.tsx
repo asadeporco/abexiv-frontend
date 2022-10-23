@@ -3,6 +3,8 @@ import { Stack, Typography } from '@mui/material'
 import { IconWithLabel } from 'components/IconWithLabel'
 import { AvatarWithName } from 'components/AvatarWithName'
 
+import { parseDateBr } from 'global/functions/parseDateBr'
+
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices'
@@ -19,7 +21,7 @@ export function AskContainer({ question }: AskContainerProps) {
       <Stack spacing={2}>
         <AvatarWithName
           image=""
-          date={question?.created_at}
+          date={parseDateBr(question?.created_at)}
           name={question?.user?.username}
         />
         <Stack spacing={1.5}>
@@ -31,11 +33,11 @@ export function AskContainer({ question }: AskContainerProps) {
       </Stack>
       <Stack spacing={2.5} direction="row" justifyContent="start">
         <IconWithLabel
-          label="Correta"
+          label="Upvote"
           icon={<ArrowUpwardIcon sx={{ fontSize: '20px' }} />}
         />
         <IconWithLabel
-          label="Incorreta"
+          label="Downvote"
           icon={<ArrowDownwardIcon sx={{ fontSize: '20px' }} />}
         />
         <IconWithLabel

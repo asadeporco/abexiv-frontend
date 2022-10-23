@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Typography, Stack } from '@mui/material'
 
 import { AvatarWithName } from 'components/AvatarWithName'
@@ -13,11 +14,16 @@ type QuestionsSearchTemplateProps = {
 export function QuestionsContainer({
   questions
 }: QuestionsSearchTemplateProps) {
+  const navigate = useNavigate()
   return (
     <Stack spacing={3}>
       {questions && questions.length > 0 ? (
         questions?.map((question) => (
-          <BoxQuestion key={question.id}>
+          <BoxQuestion
+            onClick={() => navigate(`/questions?q=${question.id}`)}
+            sx={{ cursor: 'pointer' }}
+            key={question.id}
+          >
             <AvatarWithName
               image=""
               date={parseDateBr(question.created_at)}
@@ -25,7 +31,7 @@ export function QuestionsContainer({
             />
             <Stack spacing={1}>
               <Typography fontSize={28} variant="h3">
-                {question.title.substring(0, 25)}
+                {question.title.substring(0, 40)}
               </Typography>
               <Typography fontSize={18} color="#5a5a5a">
                 {question.description.substring(0, 250)}

@@ -29,8 +29,9 @@ export function QuestionsSearchTemplate({
           </Stack>
         </Grid>
         <Grid item md={3}>
-          <Stack spacing={5}>
+          <Stack spacing={2}>
             <QuestionsCardCustom title="Perguntas em destaque" />
+            <QuestionsCardCustom title="Perguntas mais pesquisadas" />
             <AdContainer
               height="1000px"
               maxWidth="500px"
