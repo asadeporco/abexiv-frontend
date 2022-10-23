@@ -16,12 +16,12 @@ export function AvatarWithName({
   size
 }: AvatarWithNameProps) {
   const styleAvatar = {
-    width: size ? `${size}px` : '50px',
-    height: size ? `${size}px` : '50px'
+    width: size ? `${size}px` : '40px',
+    height: size ? `${size}px` : '40px'
   }
 
   return (
-    <Stack direction="row" spacing={spacing ?? 1}>
+    <Stack direction="row" spacing={spacing ?? 1.4}>
       <Avatar src={image} sx={styleAvatar} />
       <Stack spacing={-1}>
         <Typography fontSize={20}>{name}</Typography>

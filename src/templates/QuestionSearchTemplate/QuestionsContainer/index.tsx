@@ -14,7 +14,7 @@ export function QuestionsContainer({
   questions
 }: QuestionsSearchTemplateProps) {
   return (
-    <Stack spacing={5}>
+    <Stack spacing={3}>
       {questions && questions.length > 0 ? (
         questions?.map((question) => (
           <BoxQuestion key={question.id}>

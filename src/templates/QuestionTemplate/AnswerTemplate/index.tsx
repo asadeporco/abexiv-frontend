@@ -1,6 +1,4 @@
-import { Stack, Typography } from '@mui/material'
-
-import { BoxQuestion } from 'components/BoxQuestion'
+import { Grid, Stack } from '@mui/material'
 import { AvatarWithName } from 'components/AvatarWithName'
 
 import { AnswerProps } from 'global/types/AnswerProps'
@@ -11,18 +9,16 @@ type AnswerTemplateProps = {
 
 export function AnswerTemplate({ answers }: AnswerTemplateProps) {
   return (
-    <Stack spacing={3}>
-      {answers?.map((answer: AnswerProps, key: number) => (
-        <BoxQuestion spacing={3} key={key}>
+    <Stack spacing={3} padding={3}>
+      {answers?.map((answer: AnswerProps) => (
+        <Stack key={answer?.id}>
           <AvatarWithName
-            image=""
+            name={answer?.user?.username}
             date={answer?.created_at}
-            name={answer?.user.username}
+            image=""
           />
-          <Typography fontSize={17} color="#484747">
-            {answer?.description}
-          </Typography>
-        </BoxQuestion>
+          <Grid container></Grid>
+        </Stack>
       ))}
     </Stack>
   )
