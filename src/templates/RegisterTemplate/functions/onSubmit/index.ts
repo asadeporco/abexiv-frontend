@@ -25,7 +25,7 @@ export async function onSubmit(
 
       localStorage.setItem('username', data.username)
       setUsername(data.username)
-      navigate('../')
+      navigate('/')
     }
   } else {
     console.log('error')

@@ -1,4 +1,4 @@
-import { Container, Divider, Grid, Stack } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
 
 import { AskContainer } from './AskContainer'
 import { GridCustom } from 'components/GridCustom'
@@ -17,22 +17,19 @@ type QuestionTemplateProps = {
 
 export function QuestionTemplate({ question, answers }: QuestionTemplateProps) {
   return (
-    <Container>
-      <GridCustom alignItems="start" spacing={10}>
-        <Grid item xs={12} sm={8}>
-          <Stack spacing={10}>
-            <BoxQuestion spacing={5}>
-              <AskContainer question={question} />
-              <CommentAnswerTemplate />
-              <Divider />
-              <AnswerTemplate answers={answers} />
-            </BoxQuestion>
-          </Stack>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <QuestionsCardCustom title="titulo generico 29" />
-        </Grid>
-      </GridCustom>
-    </Container>
+    <GridCustom alignItems="start" spacing={10}>
+      <Grid item xs={12} sm={5}>
+        <Stack spacing={10}>
+          <BoxQuestion spacing={5}>
+            <AskContainer question={question} />
+            <CommentAnswerTemplate />
+            <AnswerTemplate answers={answers} />
+          </BoxQuestion>
+        </Stack>
+      </Grid>
+      <Grid item xs={12} sm={3}>
+        <QuestionsCardCustom title="titulo generico 29" />
+      </Grid>
+    </GridCustom>
   )
 }

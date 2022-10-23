@@ -1,10 +1,12 @@
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { useQuestion } from 'hooks/useQuestion'
 
 import { QuestionTemplate } from 'templates/QuestionTemplate'
 
 export function QuestionPage() {
-  const { questionId } = useParams()
+  const [params] = useSearchParams()
+  const questionId = params.get('q')
+
   const { question, answers } = useQuestion(questionId)
 
   return <QuestionTemplate question={question} answers={answers} />

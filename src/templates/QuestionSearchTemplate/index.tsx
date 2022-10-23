@@ -22,10 +22,9 @@ export function QuestionsSearchTemplate({
     <Stack alignItems="center" spacing={10} paddingBottom="50px">
       <Typography variant="h1">Resultados da busca</Typography>
       <Grid container justifyContent="center" direction="row" spacing={4}>
-        <Grid item md={2} border="2px solid red" width="300px"></Grid>
         <Grid item md={5}>
-          <Stack alignItems="center" spacing={5}>
-            <QuestionsContainer questions={questions} />
+          <QuestionsContainer questions={questions} />
+          <Stack alignItems="center" paddingTop={5}>
             <NavigationSearch sentence={sentence} count={numberOfQuestions} />
           </Stack>
         </Grid>

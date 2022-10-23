@@ -26,7 +26,7 @@ export function AutoCompleteSearch({
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        navigate(`/questions?search=${sentence}&page=1`)
+        navigate(`/results?search=${sentence}&page=1`)
       }}
     >
       <Autocomplete
@@ -36,7 +36,7 @@ export function AutoCompleteSearch({
         size="small"
         onChange={(e, value) => {
           if (value) {
-            navigate(`../questions/${value?.id}`)
+            navigate(`/questions?q=${value?.id}`)
             value = null
           }
         }}

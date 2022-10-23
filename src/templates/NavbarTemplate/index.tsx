@@ -129,11 +129,11 @@ export function NavbarTemplate({ token }: NavbarTemplateProps) {
               </Stack>
             ) : (
               <Stack direction="row" spacing={2}>
-                <ButtonCustom onClick={() => navigate('../login')} size="small">
+                <ButtonCustom onClick={() => navigate('/login')} size="small">
                   Fazer Login
                 </ButtonCustom>
                 <ButtonCustom
-                  onClick={() => navigate('../register')}
+                  onClick={() => navigate('/register')}
                   color="info"
                   size="small"
                 >

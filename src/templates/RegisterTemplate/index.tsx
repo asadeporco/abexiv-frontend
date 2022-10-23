@@ -74,7 +74,7 @@ export function RegisterTemplate() {
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
             Já tem uma conta?{' '}
-            <AnchorCustom handleClick={() => navigate('../login')}>
+            <AnchorCustom handleClick={() => navigate('/login')}>
               clique aqui
             </AnchorCustom>
           </Typography>

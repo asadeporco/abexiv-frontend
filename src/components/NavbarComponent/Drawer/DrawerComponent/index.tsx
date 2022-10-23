@@ -44,11 +44,11 @@ export function DrawerComponent({ menuId, setAnchorEl }: DrawerProps) {
       ) : (
         <Container>
           <Stack spacing={4}>
-            <ButtonCustom onClick={() => navigate('../login')} size="small">
+            <ButtonCustom onClick={() => navigate('/login')} size="small">
               Fazer Login
             </ButtonCustom>
             <ButtonCustom
-              onClick={() => navigate('../register')}
+              onClick={() => navigate('/register')}
               color="info"
               size="small"
             >

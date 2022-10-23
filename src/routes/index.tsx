@@ -27,17 +27,17 @@ export function UserRoutes() {
       {token ? (
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/questions/:questionId" element={<QuestionPage />} />
-          <Route path="/questions" element={<QuestionsSearchPage />} />
+          <Route path="/questions" element={<QuestionPage />} />
+          <Route path="/results" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       ) : (
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/questions/:questionId" element={<QuestionPage />} />
+          <Route path="/questions" element={<QuestionPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/questions" element={<QuestionsSearchPage />} />
+          <Route path="/results" element={<QuestionsSearchPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
