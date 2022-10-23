@@ -1,5 +1,4 @@
-import { Grid, Stack } from '@mui/material'
-import { AvatarWithName } from 'components/AvatarWithName'
+import { Avatar, Divider, Stack, Typography } from '@mui/material'
 
 import { AnswerProps } from 'global/types/AnswerProps'
 
@@ -9,15 +8,24 @@ type AnswerTemplateProps = {
 
 export function AnswerTemplate({ answers }: AnswerTemplateProps) {
   return (
-    <Stack spacing={3} padding={3}>
-      {answers?.map((answer: AnswerProps) => (
-        <Stack key={answer?.id}>
-          <AvatarWithName
-            name={answer?.user?.username}
-            date={answer?.created_at}
-            image=""
-          />
-          <Grid container></Grid>
+    <Stack spacing={10} padding={3}>
+      {answers?.map((answer: AnswerProps, key: number) => (
+        <Stack direction="row" spacing={1.4} key={key}>
+          <Stack alignItems="center">
+            <Avatar />
+            <Divider orientation="vertical" />
+          </Stack>
+          <Stack spacing={2}>
+            <Stack spacing={-1}>
+              <Typography fontSize={20}>{answer?.user?.username}</Typography>
+              <Typography color="#484747" fontSize={13}>
+                enviado em 2020-20-20
+              </Typography>
+            </Stack>
+            <Stack>
+              <Typography fontSize={16}>{answer.description}</Typography>
+            </Stack>
+          </Stack>
         </Stack>
       ))}
     </Stack>
