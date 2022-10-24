@@ -11,6 +11,8 @@ export function CommentAnswerTemplate() {
       </Typography>
       <form onSubmit={handleSubmit((data) => console.log(data))}>
         <TextFieldHook
+          name="description"
+          control={control}
           color="secondary"
           multiline
           rows={7}
