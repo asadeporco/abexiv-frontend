@@ -37,7 +37,7 @@ export function AutoCompleteSearch({
         forcePopupIcon={false}
         clearIcon={null}
         isOptionEqualToValue={(option, value) => option.id === value.id}
-        getOptionLabel={(option) => option.title.substring(0, 25)}
+        getOptionLabel={(option) => option.title.substring(0, 50)}
         renderInput={(params) => (
           <TextField
             {...params}

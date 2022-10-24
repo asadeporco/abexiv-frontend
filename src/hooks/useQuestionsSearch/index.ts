@@ -14,8 +14,9 @@ export function useQuestionsSearch(search: any, page: any, pageSize: any) {
       setQuestions(response?.results)
 
       if (response.count > 0) {
-        const numOfQuestionsDividedByPageSize =
-          Math.floor(response.count / pageSize) + 1
+        const numOfQuestionsDividedByPageSize = Math.floor(
+          response.count / pageSize
+        )
         setNumberOfQuestions(numOfQuestionsDividedByPageSize)
       }
     }

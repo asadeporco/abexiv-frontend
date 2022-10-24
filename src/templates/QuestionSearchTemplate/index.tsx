@@ -19,9 +19,9 @@ export function QuestionsSearchTemplate({
   sentence
 }: QuestionsSearchTemplateProps) {
   return (
-    <Stack alignItems="center" spacing={10} paddingBottom="50px">
+    <Stack alignItems="center" spacing={10}>
       <Typography variant="h1">Resultados da busca</Typography>
-      <Grid container justifyContent="center" direction="row" spacing={4}>
+      <Grid container justifyContent="space-evenly" direction="row">
         <Grid item md={5}>
           <QuestionsContainer questions={questions} />
           <Stack alignItems="center" paddingTop={5}>

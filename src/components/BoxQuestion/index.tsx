@@ -10,7 +10,7 @@ export function BoxQuestion({ children, ...props }: BoxQuestionProps) {
   return (
     <Stack
       textAlign="start"
-      paddingY={props.paddingY ?? 3}
+      paddingY={props.paddingY ?? 2}
       paddingX={props.paddingX ?? 2}
       borderRadius={2}
       border="2.4px solid"

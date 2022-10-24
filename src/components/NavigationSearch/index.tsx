@@ -18,6 +18,9 @@ export function NavigationSearch({ count }: NavigationSearchProps) {
   }
 
   return (
-    <Pagination onChange={(e, value) => handleChange(value)} count={count} />
+    <Pagination
+      onChange={(e, value) => handleChange(value)}
+      count={count > 0 ? count : 1}
+    />
   )
 }
