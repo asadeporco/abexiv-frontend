@@ -60,7 +60,7 @@ export function LoginTemplate() {
         <Container maxWidth={'xl'}>
           <Typography fontSize={15}>
             Não tem uma conta?{' '}
-            <AnchorCustom handleClick={() => navigate('../register')}>
+            <AnchorCustom handleClick={() => navigate('/register')}>
               clique aqui
             </AnchorCustom>
           </Typography>

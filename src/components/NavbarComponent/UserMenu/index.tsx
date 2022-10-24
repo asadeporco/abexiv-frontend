@@ -38,13 +38,13 @@ export function UserMenu({
       ) : (
         <Stack>
           <MenuItem>
-            <ButtonCustom onClick={() => navigate('../login')} size="small">
+            <ButtonCustom onClick={() => navigate('/login')} size="small">
               Fazer Login
             </ButtonCustom>
           </MenuItem>
           <MenuItem>
             <ButtonCustom
-              onClick={() => navigate('../register')}
+              onClick={() => navigate('/register')}
               color="info"
               size="small"
             >

@@ -1,4 +1,4 @@
-import { Container, Stack, Typography } from '@mui/material'
+import { Grid, Stack, Typography } from '@mui/material'
 
 import { QuestionProps } from 'global/types/QuestionProps'
 import { QuestionsContainer } from './QuestionsContainer'
@@ -9,30 +9,37 @@ import { NavigationSearch } from 'components/NavigationSearch'
 
 type QuestionsSearchTemplateProps = {
   questions?: QuestionProps[]
+  sentence: string | null
+  numberOfQuestions: number
 }
 
 export function QuestionsSearchTemplate({
-  questions
+  numberOfQuestions,
+  questions,
+  sentence
 }: QuestionsSearchTemplateProps) {
   return (
-    <Stack alignItems="center" spacing={10} paddingBottom="50px">
+    <Stack alignItems="center" spacing={10}>
       <Typography variant="h1">Resultados da busca</Typography>
-      <Stack direction="row">
-        <Container maxWidth="md">
+      <Grid container justifyContent="space-evenly" direction="row">
+        <Grid item md={5}>
           <QuestionsContainer questions={questions} />
-          <NavigationSearch count={10} />
-        </Container>
-        <Container maxWidth="xs">
-          <Stack spacing={5}>
+          <Stack alignItems="center" paddingTop={5}>
+            <NavigationSearch sentence={sentence} count={numberOfQuestions} />
+          </Stack>
+        </Grid>
+        <Grid item md={3}>
+          <Stack spacing={2}>
             <QuestionsCardCustom title="Perguntas em destaque" />
+            <QuestionsCardCustom title="Perguntas mais pesquisadas" />
             <AdContainer
               height="1000px"
-              maxWidth="400px"
-              img="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9720e55c-d222-4769-90b8-aec2262c0988/ddvtmz1-cadfaa7f-6da9-4b59-a0fe-6ed5742af38c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk3MjBlNTVjLWQyMjItNDc2OS05MGI4LWFlYzIyNjJjMDk4OFwvZGR2dG16MS1jYWRmYWE3Zi02ZGE5LTRiNTktYTBmZS02ZWQ1NzQyYWYzOGMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.G9iUpQwAJqx1MFT-nBlXA6ieOKcjtxSLzvXoeRFYr_k"
+              maxWidth="500px"
+              img="https://blog.arboimoveis.com.br/wp-content/uploads/2021/10/black-november-arbo.jpg"
             />
           </Stack>
-        </Container>
-      </Stack>
+        </Grid>
+      </Grid>
     </Stack>
   )
 }

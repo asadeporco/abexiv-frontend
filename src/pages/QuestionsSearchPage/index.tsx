@@ -6,10 +6,20 @@ import { QuestionsSearchTemplate } from 'templates/QuestionSearchTemplate'
 export function QuestionsSearchPage() {
   const [params] = useSearchParams()
   const search = params.get('search')
-  const page = params.get('page') ?? '1'
+  const page = params.get('page')
   const pageSize = '5'
 
-  const { questions } = useQuestionsSearch(search, page, pageSize)
+  const { questions, numberOfQuestions } = useQuestionsSearch(
+    search,
+    page,
+    pageSize
+  )
 
-  return <QuestionsSearchTemplate questions={questions} />
+  return (
+    <QuestionsSearchTemplate
+      sentence={search}
+      numberOfQuestions={numberOfQuestions}
+      questions={questions}
+    />
+  )
 }

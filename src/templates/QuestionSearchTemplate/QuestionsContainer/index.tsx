@@ -5,6 +5,8 @@ import { AvatarWithName } from 'components/AvatarWithName'
 import { BoxQuestion } from 'components/BoxQuestion'
 import { QuestionProps } from 'global/types/QuestionProps'
 
+import { parseDateBr } from 'global/functions/parseDateBr'
+
 type QuestionsSearchTemplateProps = {
   questions?: QuestionProps[]
 }
@@ -13,39 +15,34 @@ export function QuestionsContainer({
   questions
 }: QuestionsSearchTemplateProps) {
   const navigate = useNavigate()
-
-  console.log(questions)
-
   return (
-    <Stack spacing={7}>
-      {questions ? (
+    <Stack spacing={3}>
+      {questions && questions.length > 0 ? (
         questions?.map((question) => (
-          <a
-            onClick={() => navigate(`../questions/${question.id}`)}
-            style={{ cursor: 'pointer' }}
+          <BoxQuestion
+            onClick={() => navigate(`/questions?q=${question.id}`)}
+            sx={{ cursor: 'pointer' }}
             key={question.id}
           >
-            <BoxQuestion spacing={3}>
-              <AvatarWithName
-                image=""
-                date={question.created_at}
-                name={question.user.username}
-              />
-              <Stack spacing={2}>
-                <Typography fontSize={28} variant="h3">
-                  {question.title.substring(0, 25)}
-                </Typography>
-                <Typography fontSize={18} color="#5a5a5a">
-                  {question.description.substring(0, 250)}
-                </Typography>
-              </Stack>
-            </BoxQuestion>
-          </a>
+            <AvatarWithName
+              image=""
+              date={parseDateBr(question.created_at)}
+              name={question.user.username}
+            />
+            <Stack spacing={1}>
+              <Typography fontSize={28} variant="h3">
+                {question.title.substring(0, 40)}
+              </Typography>
+              <Typography fontSize={18} color="#5a5a5a">
+                {question.description.substring(0, 250)}
+              </Typography>
+            </Stack>
+          </BoxQuestion>
         ))
       ) : (
         <Stack>
-          <Typography variant="h1">
-            Desculpe, não conseguimos encontrar nenhuma pergunta :(
+          <Typography fontSize={24} variant="h1">
+            Nenhuma pergunta foi encontrada :(
           </Typography>
         </Stack>
       )}

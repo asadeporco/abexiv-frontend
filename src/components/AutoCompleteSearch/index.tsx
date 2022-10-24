@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Autocomplete, TextField, TextFieldProps } from '@mui/material'
+import { Autocomplete, Stack, TextField, TextFieldProps } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
 import { QuestionProps } from 'global/types/QuestionProps'
@@ -23,12 +23,7 @@ export function AutoCompleteSearch({
   const navigate = useNavigate()
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault()
-        navigate(`/questions?search=${sentence}`)
-      }}
-    >
+    <Stack>
       <Autocomplete
         options={options ?? []}
         noOptionsText="Nenhuma pergunta encontrada"
@@ -36,14 +31,13 @@ export function AutoCompleteSearch({
         size="small"
         onChange={(e, value) => {
           if (value) {
-            navigate(`../questions/${value?.id}`)
-            value = null
+            navigate(`/questions?q=${value?.id}`)
           }
         }}
         forcePopupIcon={false}
         clearIcon={null}
         isOptionEqualToValue={(option, value) => option.id === value.id}
-        getOptionLabel={(option) => option.title}
+        getOptionLabel={(option) => option.title.substring(0, 50)}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -51,6 +45,11 @@ export function AutoCompleteSearch({
             onChange={(e) => {
               handleSearch(setOptions, e.target.value)
               setSentence(e.target.value)
+            }}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                navigate(`/results?search=${sentence}&page=1`)
+              }
             }}
             color="info"
             label="Pesquisar..."
@@ -61,6 +60,6 @@ export function AutoCompleteSearch({
           />
         )}
       />
-    </form>
+    </Stack>
   )
 }

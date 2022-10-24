@@ -11,6 +11,6 @@ export async function handleSubmit(
 
   if (response) {
     setOpen(false)
-    navigate(`../questions/${response.id}`)
+    navigate(`/questions?q=${response.id}`)
   }
 }

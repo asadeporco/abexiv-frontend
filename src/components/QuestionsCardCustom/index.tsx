@@ -1,12 +1,7 @@
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Stack,
-  Typography
-} from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { QuestionProps } from 'global/types/QuestionProps'
+
+import { iconOfCategoryByName } from 'global/functions/iconOfCategoryByName'
 
 type QuestionsCardCustomProps = {
   title: string
@@ -34,24 +29,23 @@ const teste = [
 
 export function QuestionsCardCustom({ title }: QuestionsCardCustomProps) {
   return (
-    <Stack spacing={1} p={3} borderRadius={2} border="solid" textAlign="center">
+    <Stack spacing={1} p={3} alignItems="start">
       <Stack>
-        <Typography fontSize={24} m={4}>
-          {title}
-        </Typography>
-        <Divider />
+        <Typography fontSize={24}>{title}</Typography>
       </Stack>
-      <Stack spacing={1}>
+      <Stack spacing={1} paddingLeft={1.5}>
         {teste?.map((question: any) => (
-          <Button key={question.id}>
-            <Box>
-              <Container>
-                <Typography fontSize={20}>
-                  {question.title.substring(0, 25)}
-                </Typography>
-              </Container>
-            </Box>
-          </Button>
+          <Stack key={question.id} direction="row" spacing={0.5}>
+            {iconOfCategoryByName(question?.name)}
+            <Typography
+              onClick={() => console.log('belo click')}
+              component="span"
+              fontSize={18}
+              sx={{ cursor: 'pointer' }}
+            >
+              {question.title.substring(0, 25)}
+            </Typography>
+          </Stack>
         ))}
       </Stack>
     </Stack>

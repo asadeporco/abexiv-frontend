@@ -36,7 +36,7 @@ export function NavbarUserProvider({ children, token }: NavbarUserType) {
         setCategories(results)
       }
     }
-  }, [])
+  }, [token])
 
   useEffect(() => {
     getCategoriesDataFromApi()

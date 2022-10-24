@@ -2,8 +2,8 @@ import { api } from 'services/api'
 
 export async function getQuestionsWithParams(
   search?: string,
-  page?: string,
-  pageSize?: string
+  page?: number,
+  pageSize?: number
 ) {
   try {
     const response = await api.get('/question/', {
