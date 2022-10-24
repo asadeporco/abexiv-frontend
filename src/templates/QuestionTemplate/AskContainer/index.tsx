@@ -25,7 +25,7 @@ export function AskContainer({ question }: AskContainerProps) {
           name={question?.user?.username}
         />
         <Stack spacing={1.5}>
-          <Typography fontSize={24}>{question?.title}</Typography>
+          <Typography fontSize={20}>{question?.title}</Typography>
           <Typography fontSize={16} color="#484747">
             {question?.description}
           </Typography>

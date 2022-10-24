@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { NotFoundPage } from 'components/NotFoundPage'
+import { FooterCustom } from 'components/FooterCustom'
 
 import { NavbarPage } from 'pages/NavbarPage'
 import { HomePage } from 'pages/HomePage'
@@ -41,6 +42,7 @@ export function UserRoutes() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
+      <FooterCustom />
     </BrowserRouter>
   )
 }

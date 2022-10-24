@@ -42,7 +42,7 @@ export function AnswerTemplate({ answers }: AnswerTemplateProps) {
               </Stack>
             </Stack>
             <Stack>
-              <Typography fontSize={16} color="#484747">
+              <Typography fontSize={14} color="#484747">
                 {answer.description}
               </Typography>
             </Stack>
