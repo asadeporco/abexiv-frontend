@@ -7,12 +7,11 @@ import { parseDateBr } from 'global/functions/parseDateBr'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices'
+import { useQuestionContext } from 'context/Question'
 
-type AnswerTemplateProps = {
-  answers?: AnswerProps[]
-}
+export function AnswerTemplate() {
+  const { answers } = useQuestionContext()
 
-export function AnswerTemplate({ answers }: AnswerTemplateProps) {
   return (
     <Stack spacing={10} padding={3}>
       {answers?.map((answer: AnswerProps, key: number) => (

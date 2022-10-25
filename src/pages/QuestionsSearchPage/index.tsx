@@ -1,7 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
-import { useQuestionsSearch } from 'hooks/useQuestionsSearch'
 
 import { QuestionsSearchTemplate } from 'templates/QuestionSearchTemplate'
+import { QuestionsSearchProvider } from 'context/QuestionsSearch'
 
 export function QuestionsSearchPage() {
   const [params] = useSearchParams()
@@ -9,17 +9,9 @@ export function QuestionsSearchPage() {
   const page = params.get('page')
   const pageSize = '5'
 
-  const { questions, numberOfQuestions } = useQuestionsSearch(
-    search,
-    page,
-    pageSize
-  )
-
   return (
-    <QuestionsSearchTemplate
-      sentence={search}
-      numberOfQuestions={numberOfQuestions}
-      questions={questions}
-    />
+    <QuestionsSearchProvider search={search} page={page} pageSize={pageSize}>
+      <QuestionsSearchTemplate />
+    </QuestionsSearchProvider>
   )
 }

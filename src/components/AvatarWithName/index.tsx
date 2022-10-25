@@ -1,7 +1,7 @@
 import { Avatar, Stack, Typography } from '@mui/material'
 
 type AvatarWithNameProps = {
-  name: string
+  name: string | undefined
   image: string
   date?: string
   spacing?: number
