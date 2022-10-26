@@ -7,7 +7,7 @@ type AskContainerProps = {
 export function AdContainer({ img, ...props }: AskContainerProps) {
   return (
     <Stack {...props}>
-      <img height="100%" src={img} alt="Ask" />
+      <img src={img} alt="Propaganda" />
     </Stack>
   )
 }

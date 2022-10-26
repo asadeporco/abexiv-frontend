@@ -1,13 +1,11 @@
 import { Pagination } from '@mui/material'
+import { useQuestionsSearchContext } from 'context/QuestionsSearch'
 import { useSearchParams } from 'react-router-dom'
 
-type NavigationSearchProps = {
-  count: number
-  sentence: string | null
-}
-
-export function NavigationSearch({ count }: NavigationSearchProps) {
+export function NavigationSearch() {
   const [searchParams, setSearchParams] = useSearchParams()
+
+  const { numberOfQuestions } = useQuestionsSearchContext()
 
   const updatedSearchParams = new URLSearchParams(searchParams.toString())
   const handleChange = (page: number) => {
@@ -20,7 +18,7 @@ export function NavigationSearch({ count }: NavigationSearchProps) {
   return (
     <Pagination
       onChange={(e, value) => handleChange(value)}
-      count={count > 0 ? count : 1}
+      count={numberOfQuestions > 0 ? numberOfQuestions : 1}
     />
   )
 }

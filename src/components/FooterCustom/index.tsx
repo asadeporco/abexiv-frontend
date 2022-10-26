@@ -2,7 +2,7 @@ import { Stack, Typography } from '@mui/material'
 
 export function FooterCustom() {
   return (
-    <Stack spacing={2} paddingTop="200px" alignItems="center">
+    <Stack spacing={2} paddingTop="100px" alignItems="center">
       <Stack direction="row" spacing={3}>
         <img
           style={{ width: '50px', height: '50px' }}

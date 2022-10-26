@@ -3,18 +3,15 @@ import { Typography, Stack } from '@mui/material'
 
 import { AvatarWithName } from 'components/AvatarWithName'
 import { BoxQuestion } from 'components/BoxQuestion'
-import { QuestionProps } from 'global/types/QuestionProps'
 
 import { parseDateBr } from 'global/functions/parseDateBr'
+import { useQuestionsSearchContext } from 'context/QuestionsSearch'
 
-type QuestionsSearchTemplateProps = {
-  questions?: QuestionProps[]
-}
-
-export function QuestionsContainer({
-  questions
-}: QuestionsSearchTemplateProps) {
+export function QuestionsContainer() {
   const navigate = useNavigate()
+
+  const { questions } = useQuestionsSearchContext()
+
   return (
     <Stack spacing={3}>
       {questions && questions.length > 0 ? (

@@ -9,13 +9,11 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices'
 import StarIcon from '@mui/icons-material/Star'
+import { useQuestionContext } from 'context/Question'
 
-type AskContainerProps = {
-  question?: any
-  userLogged?: boolean
-}
+export function AskContainer() {
+  const { question } = useQuestionContext()
 
-export function AskContainer({ question }: AskContainerProps) {
   return (
     <Stack spacing={5}>
       <Stack spacing={2}>
