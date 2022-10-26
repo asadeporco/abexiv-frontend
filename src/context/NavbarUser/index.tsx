@@ -11,8 +11,6 @@ import {
 } from 'react'
 import { getCategories } from 'services/gets/getCategories'
 
-// NavbarUser - trocar pelo nome correto do contexto
-
 type NavbarUserType = {
   children: ReactNode
   token: string | null

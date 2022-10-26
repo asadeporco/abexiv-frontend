@@ -1,15 +1,19 @@
+import { getAnswersFromQuestion } from 'services/gets/getAnswersFromQuestion'
 import { postAnswer } from 'services/posts/postAnswer'
 
-export function handleSubmit(
+export async function handleSubmit(
   data: any,
   token: string | null,
   questionId: number,
-  setError: any
+  setError: any,
+  setAnswers: any
 ) {
-  const response = postAnswer(data, token, questionId)
+  const response = await postAnswer(data, token, questionId)
   if (response) {
-    // getAnswersDataFromApi()
-    return response
+    const responseGet = getAnswersFromQuestion(questionId)
+    if (responseGet) {
+      setAnswers(responseGet)
+    }
   } else {
     setError('description', { message: 'Erro ao enviar resposta' })
   }

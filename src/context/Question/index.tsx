@@ -14,8 +14,6 @@ import { getAnswersFromQuestion } from 'services/gets/getAnswersFromQuestion'
 import { getQuestionDetail } from 'services/gets/getQuestionDetail'
 import { getSimilarQuestion } from 'services/gets/getSimilarQuestions'
 
-// Question - trocar pelo nome correto do contexto
-
 type QuestionType = {
   children: ReactNode
   id: any
@@ -28,6 +26,7 @@ type QuestionContextType = {
   similarQuestions: QuestionProps[] | undefined
   setSimilarQuestions: Dispatch<SetStateAction<QuestionProps[] | undefined>>
   setAnswers: Dispatch<SetStateAction<AnswerProps[] | undefined>>
+  id: any
 }
 
 const QuestionContext = createContext({} as QuestionContextType)
@@ -61,6 +60,7 @@ export function QuestionProvider({ children, id }: QuestionType) {
   return (
     <QuestionContext.Provider
       value={{
+        id,
         question,
         setQuestion,
         answers,

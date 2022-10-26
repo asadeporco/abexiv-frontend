@@ -6,17 +6,19 @@ import { useForm } from 'react-hook-form'
 import { resolver } from './functions/resolver'
 import { handleSubmit } from './functions/handleSubmit'
 import { useUserContext } from 'context/UserContext'
+import { useQuestionContext } from 'context/Question'
 
 export function CommentAnswerTemplate() {
   const methods = useForm({ defaultValues: { description: '' }, resolver })
   const { token } = useUserContext()
+  const { id, setAnswers } = useQuestionContext()
 
   return (
     <Stack
       spacing={2}
       component="form"
       onSubmit={methods.handleSubmit((data) =>
-        handleSubmit(data, token, 1, methods.setError)
+        handleSubmit(data, token, id, methods.setError, setAnswers)
       )}
     >
       <Stack>

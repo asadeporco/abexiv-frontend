@@ -11,8 +11,6 @@ import {
 } from 'react'
 import { getQuestionsWithParams } from 'services/gets/getQuestionsWithParams'
 
-// QuestionsSearch - trocar pelo nome correto do contexto
-
 type QuestionsSearchType = {
   children: ReactNode
   search: any
