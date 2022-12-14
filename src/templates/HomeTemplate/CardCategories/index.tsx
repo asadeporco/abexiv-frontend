@@ -18,7 +18,7 @@ export const CardCategories = () => {
       <Container maxWidth="lg">
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
-          spacing={4}
+          spacing={2}
           justifyContent="center"
         >
           {cardCategories.map((card) => (

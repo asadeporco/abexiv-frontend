@@ -9,6 +9,7 @@ import { LoginPage } from 'pages/LoginPage'
 import { RegisterPage } from 'pages/RegisterPage'
 import { QuestionPage } from 'pages/QuestionPage'
 import { QuestionsSearchPage } from 'pages/QuestionsSearchPage'
+import { UserPage } from 'pages/UserPage'
 
 import { green } from 'global/data/Green'
 import { useUserContext } from 'context/UserContext'
@@ -30,6 +31,7 @@ export function UserRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/questions" element={<QuestionPage />} />
           <Route path="/results" element={<QuestionsSearchPage />} />
+          <Route path="/user" element={<UserPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       ) : (
@@ -39,6 +41,7 @@ export function UserRoutes() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/results" element={<QuestionsSearchPage />} />
+          <Route path="/user" element={<UserPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
