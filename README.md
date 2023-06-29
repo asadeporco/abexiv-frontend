@@ -1,10 +1,10 @@
 # Abex IV
-### How to run
+###  Rodar o projeto
 
     make first-setup
 
-### How to stop
+### Parar o projeto
 
     make stop
 
-#### For more commands check the file Makefile on project root
+#### Para mais comandos checar o makefile do projeto raiz
